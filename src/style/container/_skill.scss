@@ -1,0 +1,56 @@
+.skill{
+	clear:both;
+	overflow:hidden;
+	width:$wrapper;
+	margin:0 auto;
+	margin-top:30px;
+	.skill-wrap{
+		margin-top:30px;
+		display: flex;
+		margin-left:20px;
+		.skill-card{
+			border:3px solid $bold;
+			border-radius:5px;
+			padding:20px 0px;
+			width:200px;
+			text-align: center;
+			margin:0px 20px;
+			.image{
+				text-align: center;
+				margin-bottom: 10px;
+			}
+			.title{
+				text-align: center;
+				font-family: $font-roboto;
+				color:$bold;
+				font-size: $reguler;
+				margin-bottom: 30px;
+			}
+			.skill-item-list{
+				width:85%;
+				margin:0 auto;
+				li{
+					border-bottom:1px solid #F2F2F2;
+					clear:both;
+					overflow: hidden;
+					margin-bottom: 5px;
+					padding-bottom: 5px;
+					.skill-item{
+					font-family: $font-roboto;
+					font-size: $lite;
+					color:$gray;
+					float:left;
+					}
+					.skill-score{
+						font-family: $font-roboto;
+						font-size: $lite;
+						color:$yellow;
+						font-weight: bold;
+						float:right;
+					}
+				}
+				
+			}
+		}
+	}
+}
