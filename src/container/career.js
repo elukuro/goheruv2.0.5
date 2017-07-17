@@ -10,7 +10,8 @@ class Career extends Component{
 		super(props);
 		this.state={
 			about:{},
-			career:{}
+			career:{},
+			heading:'Here some place that I having fun and struggle for work'
 		}
 	}
 
@@ -56,7 +57,7 @@ class Career extends Component{
 				<div className="career">
 					{this.renderCareer()}
 					<div className="job">
-						<h2 className="heading">Here some place that I having fun work with</h2>
+						<h2 className="heading">{this.state.heading}</h2>
 						{this.renderJob()}
 					</div>
 				</div>

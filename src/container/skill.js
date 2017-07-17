@@ -10,7 +10,8 @@ class Skill extends Component{
 		super(props);
 		this.state={
 			description:{},
-			skill:{}
+			skill:{},	
+			heading:"here what I'm good with"
 		}
 	}
 
@@ -65,7 +66,7 @@ class Skill extends Component{
 	render(){
 		return(
 			<div className="skill"> 
-				<h2  className="heading">Here What I’am good at  Doing that</h2>
+				<h2  className="heading">{this.state.heading}</h2>
 				{this.renderDescription()}
 				<ul className="skill-wrap">
 					{this.renderLoop()}

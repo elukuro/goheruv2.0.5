@@ -9,7 +9,9 @@ class Project extends Component{
 	constructor(props){
 		super(props);
 		this.state={
-			portfolio:{}
+			portfolio:{},
+			heading:"Project, activity, goal that I recently struggle with",
+			text:{}
 		}
 	}
 
@@ -17,6 +19,10 @@ class Project extends Component{
 		axios.get('http://goheru.com/public/portfolioJson').then((response)=> {
     			this.setState({portfolio:response.data});
  		 })
+		axios.get('http://goheru.com/public/landingpageJson').then((response)=> {
+    			this.setState({text:response.data});
+ 		 })
+
 	}
 
 	renderProject(){
@@ -32,13 +38,21 @@ class Project extends Component{
 		})
 	}
 
+	renderText(){
+		return _.map(this.state.text,item=>{
+			return(
+				<p className="text" key={item.id}>{item.heading}</p>		
+			)
+		})
+	}
+
 
 	render(){
 		return(
 			<div className="project">
 				<div className="project-wrap">
-					<h2 className="heading">Project, activity, goal that I recently I want to do or doing</h2>
-					<p className="text">Here is some of my side-project / product that I develop to maintain my existance in the web development world and to maintain my skill and also bla bla bla its hard to find a nice</p>
+					<h2 className="heading">{this.state.heading}</h2>
+					{this.renderText()}
 					<div className="project-list">
 						<ul>
 							{this.renderProject()}

@@ -29,9 +29,11 @@ class Jumbo extends Component{
 				)
 			})
 		}else if(page=='notes'){
-			return(
-				<p className="headline">Every day is a great day, take a note for some special momen or just thinking inside my head for the moment</p>
-			)
+			return _.map(this.state.landingpage,item=>{
+				return(
+					<p key={item.id} className="headline">{item.content_admin}</p>
+				)
+			})
 		}
 	}
 	render(){
