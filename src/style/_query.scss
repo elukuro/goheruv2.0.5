@@ -20,11 +20,26 @@
 	.skill{
 		.skill-wrap{
 			display: block;
-			margin:10px auto;
+			margin:40px auto 10px auto;
 			.skill-card{
-				width:90%;
+				width:80%;
 				margin:0 auto;
 				margin-bottom: 20px;
+			}
+		}
+	}
+	.work-list{
+		ul{
+			display: block;
+			margin:40px auto 10px auto;
+			.work-list-card{
+				width:80%;
+				margin:0 auto;
+				margin-bottom:20px;
+				display: block;
+			}
+			.work-list-card:last-child{
+				margin-right:auto;
 			}
 		}
 	}

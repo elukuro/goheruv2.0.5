@@ -7,6 +7,7 @@ class Nav extends Component{
 				<ul>
 					<li><Link to="/" className={(this.props.active=='home') ? 'link active' : 'link'}>Home</Link></li>
 					<li><Link to="/notes" className={(this.props.active=='notes') ? 'link active' : 'link'}>Notes</Link></li>
+					<li><Link to="/work" className={(this.props.active=='work') ? 'link active' : 'link'}>Work</Link></li>
 				</ul>
 			</div>
 		)

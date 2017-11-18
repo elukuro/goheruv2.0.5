@@ -11,7 +11,8 @@ class Jumbo extends Component{
 		super(props);
 		this.state={
 			landingpage:{},
-			loading:true
+			loading:true,
+			workHeading:"Place to put some of my work, my personal project , something that I think people should  know"
 		}
 	}
 
@@ -34,6 +35,10 @@ class Jumbo extends Component{
 					<p key={item.id} className="headline">{item.content_admin}</p>
 				)
 			})
+		}else if(page=='work'){
+			return(
+				<p className="headline">{this.state.workHeading}</p>
+			)
 		}
 	}
 	render(){
