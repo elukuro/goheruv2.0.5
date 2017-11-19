@@ -10,13 +10,15 @@ const createStoreWithMiddleware=applyMiddleware(Promise)(createStore);
 import App from './component/app';
 import Notes from './component/notes';
 import Detail from './component/detail';
+import Work from './component/work';
 ReactDOM.render(
 	<Provider store={createStoreWithMiddleware(reducers)}>
 		<HashRouter>
 			<main className="body-wrapper">
 				<Switch>
 					<Route exact path="/notes/:id" component={Detail}/>
-					<Route exact path="/notes" component={Notes}/>	
+					<Route exact path="/notes" component={Notes}/>
+					<Route exact path="/work" component={Work}/>
 					<Route exact path="/" component={App}/>	
 				</Switch>
 			</main>

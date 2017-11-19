@@ -7,7 +7,9 @@
 @import 'container/skill';
 @import 'container/project';
 @import 'container/blog';
+@import 'container/worklist';
 @import 'query';
+
 /* reset */
 
 .body-wrapper{
@@ -76,4 +78,7 @@ h1,h2,h3,h4,h5,p{
 	color:$gray;
 	font-weight:normal;
 	line-height: 1.4em;
+}
+.center{
+	text-align: center;
 }

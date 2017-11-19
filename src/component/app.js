@@ -5,6 +5,7 @@ import Jumbo from '../container/jumbo';
 import Career from '../container/career';
 import Skill from '../container/skill';
 import Project from '../container/project';
+import BlogLite from '../container/blog-lite';
 import axios from 'axios';
 class App extends Component{
 	constructor(props){
@@ -28,7 +29,7 @@ class App extends Component{
 					<Jumbo image="sunrise.png" page="default"/>
 					<Career/>
 					<Skill/>
-					<Project/>
+					<BlogLite/>
 				</div>
 			)
 	}
