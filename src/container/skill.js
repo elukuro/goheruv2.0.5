@@ -38,7 +38,7 @@ class Skill extends Component{
 		return _.map(this.state.skill,item=>{
 				if(item.category==id){
 					return(
-						<li key={item.id}><span className="skill-item">{item.description}</span><span className="skill-score">{item.point}%</span></li>	
+						<li key={item.id}><span className="skill-item">{item.description}</span><span className="skill-score">{item.point/10} of 5</span></li>	
 					)
 				}	
 		})	

@@ -33,6 +33,10 @@
 			font-size: $paragraph;
 			color:$bold;
 			padding:8px 0px;
+			font-weight: 400;
+			-webkit-text-stroke-width: .05px;
+			-webkit-text-stroke-color: white;
+			-webkit-font-smoothing: antialiased;
 		}
 		a{
 			font-size: $reguler;
