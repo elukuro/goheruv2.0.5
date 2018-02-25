@@ -69,7 +69,7 @@ class BlogLite extends Component{
 					</div>
 					<div className="center">
 					<img src={require('../images/plant.png')} className="image"/>
-					<p className="right text">created 2017</p>
+					<p className="right text footer-text">craft with love 2016-2018</p>
 					</div>
 				</div>
 			)

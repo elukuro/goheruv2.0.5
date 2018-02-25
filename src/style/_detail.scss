@@ -70,3 +70,27 @@
 		}
 	}
 }
+.detail-medium{
+	figure{
+		img{
+			width:100%;
+		}
+	}
+	figcaption{
+		text-align: center;
+	}
+	.detail-medium-original-source{
+		display: block;
+		text-align: left;
+		a{
+			text-align: center;
+			color:$gray;
+			font-size: 10px;
+			text-decoration:underline;
+			&:hover{
+				//text-decoration: underline;
+			}
+		}
+		
+	}
+}

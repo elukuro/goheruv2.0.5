@@ -12,7 +12,8 @@ class Jumbo extends Component{
 		this.state={
 			landingpage:{},
 			loading:true,
-			workHeading:"Place to put some of my work, my personal project , something that I think people should  know"
+			mediumHeading:"when I write at medium insted of at my own website LoL :D ",
+			workHeading:"Place to put some of my work, my personal project, something that I think people should know"
 		}
 	}
 
@@ -38,6 +39,10 @@ class Jumbo extends Component{
 		}else if(page=='work'){
 			return(
 				<p className="headline">{this.state.workHeading}</p>
+			)
+	}else if(page=='medium'){
+			return(
+				<p className="headline">{this.state.mediumHeading}</p>
 			)
 		}
 	}
