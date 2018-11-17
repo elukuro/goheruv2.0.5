@@ -43,4 +43,19 @@
 			}
 		}
 	}
+	.book-list{
+		ul{
+			display: block;
+			margin:40px auto 10px auto;
+			.book-list-card{
+				width:80%;
+				margin:0 auto;
+				margin-bottom:20px;
+				display: block;
+			}
+			.book-list-card:last-child{
+				margin-right:auto;
+			}
+		}
+	}
 }

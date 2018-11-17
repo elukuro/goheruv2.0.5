@@ -12,8 +12,9 @@ class Jumbo extends Component{
 		this.state={
 			landingpage:{},
 			loading:true,
-			mediumHeading:"when I write at medium insted of at my own website LoL :D ",
-			workHeading:"Place to put some of my work, my personal project, something that I think people should know"
+			mediumHeading:"Because People love to write at medium istead of their own website LoL :D ",
+			workHeading:"Place to preview my work, my personal project, others",
+			bookHeading:"Books is the windows of the world before internet and search engine dominating"
 		}
 	}
 
@@ -40,9 +41,13 @@ class Jumbo extends Component{
 			return(
 				<p className="headline">{this.state.workHeading}</p>
 			)
-	}else if(page=='medium'){
+		}else if(page=='medium'){
+				return(
+					<p className="headline">{this.state.mediumHeading}</p>
+				)
+		}else if(page=='book'){
 			return(
-				<p className="headline">{this.state.mediumHeading}</p>
+				<p className="headline">{this.state.bookHeading}</p>
 			)
 		}
 	}

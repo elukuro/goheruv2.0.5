@@ -49,7 +49,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'web developer | 10K runner | bookworm | simple-minded | overthinker',
+      title: 'web developer | Half marathon runner | bookworm | simple-minded | overthinker',
       hash: true,
       template: './src/template/index.html',
       minify: {

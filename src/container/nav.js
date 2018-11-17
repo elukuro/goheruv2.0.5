@@ -6,10 +6,10 @@ class Nav extends Component{
 			<div className="nav">
 				<ul>
 					<li><Link to="/" className={(this.props.active=='home') ? 'link active' : 'link'}>Home</Link></li>
+					<li><Link to="/medium" className={(this.props.active=='medium') ? 'link active' : 'link'}>@Medium</Link></li>
 					<li><Link to="/notes" className={(this.props.active=='notes') ? 'link active' : 'link'}>Notes</Link></li>
-					<li><Link to="/medium" className={(this.props.active=='medium') ? 'link active' : 'link'}>Medium</Link></li>
-					<li><Link to="/work" className={(this.props.active=='work') ? 'link active' : 'link'}>Work</Link></li>
-
+					<li><Link to="/book" className={(this.props.active=='book') ? 'link active' : 'link'}>Books</Link></li>
+					<li><Link to="/work" className={(this.props.active=='work') ? 'link active' : 'link'}>Done</Link></li>
 				</ul>
 			</div>
 		)
