@@ -36,13 +36,15 @@ class Books extends Component{
 		return _.map(this.state.books,(item,key)=>{
 			return(
 				<li key={key} className="book-list-card">
+				<a href={item.url._cdata}>
 					<img src={item.book.image_url._text}/>
 					<div className="book-list-item">
 						<p className="text">Avg.Rating: ( {item.book.average_rating._text} ) </p>
-						<p className="text">Read: {Moment(item.date_updated).format('DD MMM YYYY')}</p>
-						<h4 className="heading"><a href={item.url._cdata}>{item.book.title._text}</a></h4>
-						<span> Author : {item.book.authors.author.name._text}</span>
+						<p className="text">Read / update: {Moment(item.date_updated).format('MMM YYYY')}</p>
+						<h4 className="heading">{item.book.title._text}</h4>
+						<span className="author"> Author : {item.book.authors.author.name._text}</span>
 					</div>
+				</a>
 				</li>
 			)
 		})

@@ -32,7 +32,7 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
         loader: [
           'file-loader?name=[name].[ext]&outputPath=images/',
           'image-webpack-loader'
