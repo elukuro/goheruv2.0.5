@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import Moment from 'moment';
 import _ from 'lodash';
 import Loading from './loading';
+
 
 class BlogLite extends Component{
 
@@ -12,9 +14,10 @@ class BlogLite extends Component{
 		this.state={
 			blog:{},
 			loading:true,
-			heading:"Here my latest note that I write",
-			quote:"sometime I stop and back to one of this note to remaind me how great my life is",
-			text:{}
+			heading:"Some of my note that I write",
+			quote:"Place to remind myself how great my life is",
+			text:{},
+			medium:{}
 		}
 	}
 
@@ -25,7 +28,11 @@ class BlogLite extends Component{
 
 		axios.get('http://goheru.com/public/landingpageJson').then((response)=> {
     			this.setState({text:response.data});
- 		 })
+		})
+		  
+		axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto').then((response)=> {
+			this.setState({medium:response.data.items,loading:false});
+		})
 	}
 
 	renderText(){
@@ -39,11 +46,23 @@ class BlogLite extends Component{
 
 	renderBlog(){
 
-		return _.map(this.state.blog.slice(0,3),item=>{
+		return _.map(this.state.blog.slice(0,2),item=>{
 			return(
 				<li key={item.id}>
 					<p className="text">{item.created_at} #{item.category}</p>
 					<h4 className="heading"><Link to={`/notes/${item.id}`}>{item.title}</Link></h4>
+				</li>
+			)
+		})
+	}
+
+	renderMedium(){
+		return _.map(this.state.medium.slice(0,3),(item,key)=>{
+			return(
+				<li key={key}>
+					<p className="text">{Moment(item.pubDate).format('DD MMM YYYY')} #{item.categories[0]}
+					</p>
+					<h4 className="heading"><Link to={`/medium/${key}`}>{item.title}</Link></h4>
 				</li>
 			)
 		})
@@ -61,6 +80,11 @@ class BlogLite extends Component{
 					<div className="blog-wrap">
 					<h2 className="heading">{this.state.heading}</h2>
 					<p className="text">{this.state.quote}</p>
+						<div className="blog-list">
+							<ul>
+								{this.renderMedium()}
+							</ul>
+						</div>
 						<div className="blog-list">
 							<ul>
 								{this.renderBlog()}

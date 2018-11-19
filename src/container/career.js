@@ -20,8 +20,7 @@ class Career extends Component{
 				this.setState({about:response.data});
  		 })
 		axios.get('http://goheru.com/public/careerJson').then((response)=> {
-				console.log(response.data);
-    			this.setState({career:response.data});
+				this.setState({career:response.data});
  		 })
 
 	}
