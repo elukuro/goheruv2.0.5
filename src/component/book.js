@@ -19,7 +19,7 @@ class Books extends Component{
 		return(
 			<div>
 				<Nav active="book"/>
-				<Jumbo image="big-plant.png" page="book"/>
+				<Jumbo image="big-plant.png" page="book" alt="big-plant"/>
 				<Book/>
 			</div>
 		)

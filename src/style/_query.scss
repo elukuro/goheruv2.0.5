@@ -29,11 +29,12 @@
 		}
 	}
 	.work-list{
+		width:100%;
 		ul{
 			display: block;
 			margin:40px auto 10px auto;
 			.work-list-card{
-				width:80%;
+				width:100%;
 				margin:0 auto;
 				margin-bottom:20px;
 				display: block;
@@ -62,6 +63,9 @@
 		}
 	}
 	.book-list-wrapper ul li img{
-		width:22%;
+		width:18%;
+	}
+	.nav ul li{
+		margin-left: 14px;
 	}
 }

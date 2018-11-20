@@ -18,17 +18,38 @@ class Books extends Component{
 	}
 
 	componentDidMount(){
-		var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
+		var now = new Date();
+		if(now.getHours() > 5 && localStorage.getItem("flag")===null){
+			localStorage.removeItem("bookData");
+			//alert("di dalam lebih dari jam 5")
+		}
+
+		if (localStorage.getItem("bookData") === null) {
+			var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
 		axios.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/78987652.xml?key=dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto&shelf=read&per_page=200',config).then((response)=> {
                 var result = convert.xml2json(response.data, {compact: true, spaces: 4});
 				var jsonResult=JSON.parse(result);
-
 				this.setState({
 					loading:false,
 					books:jsonResult.GoodreadsResponse.reviews.review
-				});		
-				console.log(jsonResult.GoodreadsResponse.reviews.review)
-		})
+				});
+				localStorage.setItem('bookData',JSON.stringify(jsonResult.GoodreadsResponse.reviews.review));
+				localStorage.setItem('flag','true');
+				//alert("di dalam jika kosong")
+			})
+		}else{
+			this.setState({
+				loading:false,
+				books:JSON.parse(localStorage.getItem("bookData"))
+			});
+			localStorage.setItem('flag','true');
+			if(now.getHours()>20){
+				localStorage.removeItem("flag");
+				//alert("di dalam lebih else lebih dari menit ke 10")
+			}
+		}
+
+		
 		  
 	}
 
@@ -37,7 +58,7 @@ class Books extends Component{
 			return(
 				<li key={key} className="book-list-card">
 				<a href={item.url._cdata}>
-					<img src={item.book.image_url._text}/>
+					<img src={item.book.image_url._text} alt={item.book.image_url._text}/>
 					<div className="book-list-item">
 						<p className="text">Avg.Rating: ( {item.book.average_rating._text} ) </p>
 						<p className="text">Read / update: {Moment(item.date_updated).format('MMM YYYY')}</p>

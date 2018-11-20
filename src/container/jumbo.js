@@ -59,7 +59,7 @@ class Jumbo extends Component{
 		}else{
 			return(
 				<div className="jumbo">
-					<img src={require('../images/'+this.props.image)} className="image"/>
+					<img src={require('../images/'+this.props.image)} alt="jumbo" className="image"/>
 					{this.renderPost()}
 					<ul className={(this.props.page=='default') ? 'social-media' : 'social-media hide'}>
 						<li><a href="https://twitter.com/heru_hartanto" target="_blank"><i className="fa fa-twitter fa-2x"></i></a> </li><li><a href="https://medium.com/@heruhartanto" target="_blank"><i className="fa fa-medium fa-2x"></i></a></li><li><a href="https://github.com/elukuro" target="_blank"><i className="fa fa-github fa-2x"></i></a></li><li><a href="https://www.linkedin.com/in/heru-hartanto-618b575b" target="_blank"><i className="fa fa-linkedin fa-2x"></i></a></li><li><a href="mailto:heruhartanto110291@gmail.com" target="_blank"><i className="fa fa-paper-plane fa-2x"></i></a></li>

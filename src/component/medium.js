@@ -19,7 +19,7 @@ class Notes extends Component{
 		return(
 			<div>
 				<Nav active="medium"/>
-				<Jumbo image="big-plant.png" page="medium"/>
+				<Jumbo image="big-plant.png" page="medium" alt="big-plant"/>
 				<Medium/>
 			</div>
 		)

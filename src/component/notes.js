@@ -21,7 +21,7 @@ class Notes extends Component{
 		return(
 			<div>
 				<Nav active="notes"/>
-				<Jumbo image="big-plant.png" page="notes"/>
+				<Jumbo image="big-plant.png" page="notes" alt="big-plant"/>
 				<Blog/>
 			</div>
 		)

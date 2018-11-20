@@ -58,7 +58,7 @@ class Project extends Component{
 							{this.renderProject()}
 						</ul>
 					</div>
-					<img src={require('../images/plant.png')} className="image"/>
+					<img src={require('../images/plant.png')} className="image" alt="plant"/>
 					<p className="right text footer-text">craft with love 2016-2018</p>
 				</div>
 				
