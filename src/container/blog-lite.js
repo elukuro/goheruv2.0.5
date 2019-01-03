@@ -31,26 +31,29 @@ class BlogLite extends Component{
 		})
 		  
 		var now = new Date();
-		if(now.getHours() > 5 && localStorage.getItem("flagMedium")===null){
+		if(now.getHours() > 4 && now.getHours() < 10){
 			localStorage.removeItem("mediumData");
-			//alert("di dalam lebih dari jam 5")
-		}
-
-		if (localStorage.getItem("mediumData") === null) {
+			// //alert("di dalam lebih dari jam 5")
 			axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto').then((response)=> {
-				this.setState({medium:response.data.items});
 				localStorage.setItem('mediumData',JSON.stringify(response.data.items));
-				localStorage.setItem('flagMedium','true');
- 		 	})
+				this.setState({
+					medium:JSON.parse(localStorage.getItem("mediumData"))
+				});
+			})
 		}else{
-			this.setState({
-				medium:JSON.parse(localStorage.getItem("mediumData"))
-			});
-			localStorage.setItem('flagMedium','true');
-			if(now.getHours()>20){
-				localStorage.removeItem("flagMedium");
-				//alert("di dalam lebih else lebih dari menit ke 10")
+			if(localStorage.getItem("mediumData")){
+				axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto').then((response)=> {
+					localStorage.setItem('mediumData',JSON.stringify(response.data.items));
+					this.setState({
+						medium:JSON.parse(localStorage.getItem("mediumData"))
+					});
+				})	
+			}else{
+				this.setState({
+					medium:JSON.parse(localStorage.getItem("mediumData"))
+				});
 			}
+			
 		}
 	}
 
