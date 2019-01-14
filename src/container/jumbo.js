@@ -12,9 +12,9 @@ class Jumbo extends Component{
 		this.state={
 			landingpage:{},
 			loading:true,
-			mediumHeading:"Because People love to write at medium istead of their own website LoL :D ",
-			workHeading:"Place to preview my work, my personal project, others",
-			bookHeading:"Books is the windows of the world before internet and search engine dominating"
+			mediumHeading:"When I publish at medium it will appears here:D ",
+			workHeading:"Place to preview my work and archivement, my personal project, others",
+			bookHeading:"Books is the windows of the world before internet"
 		}
 	}
 

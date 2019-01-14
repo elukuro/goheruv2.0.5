@@ -19,10 +19,8 @@ class Books extends Component{
 
 	componentDidMount(){
 		var now = new Date();
-		if(now.getHours() > 4 && now.getHours() < 10){
-			localStorage.removeItem("bookData");
-			var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
-			axios.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/78987652.xml?key=dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto&shelf=read&per_page=200',config).then((response)=> {
+		var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
+		axios.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/78987652.xml?key=dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto&shelf=read&per_page=200',config).then((response)=> {
                 var result = convert.xml2json(response.data, {compact: true, spaces: 4});
 				var jsonResult=JSON.parse(result);
 				this.setState({
@@ -30,25 +28,41 @@ class Books extends Component{
 					books:jsonResult.GoodreadsResponse.reviews.review
 				});
 				localStorage.setItem('bookData',JSON.stringify(jsonResult.GoodreadsResponse.reviews.review));
-			})
-		}else{
-			if(localStorage.getItem("bookData")){
-				axios.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/78987652.xml?key=dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto&shelf=read&per_page=200',config).then((response)=> {
-                var result = convert.xml2json(response.data, {compact: true, spaces: 4});
-				var jsonResult=JSON.parse(result);
-				this.setState({
-					loading:false,
-					books:jsonResult.GoodreadsResponse.reviews.review
-				});
-					localStorage.setItem('bookData',JSON.stringify(jsonResult.GoodreadsResponse.reviews.review));
-				})
-			}else{
-				this.setState({
-					loading:false,
-					books:jsonResult.GoodreadsResponse.reviews.review
-				});
-			}
-		} 
+		})
+
+
+		// if(now.getHours() > 12){
+		// 	localStorage.removeItem("bookData");
+		// 	var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
+		// 	axios.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/78987652.xml?key=dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto&shelf=read&per_page=200',config).then((response)=> {
+        //         var result = convert.xml2json(response.data, {compact: true, spaces: 4});
+		// 		var jsonResult=JSON.parse(result);
+		// 		this.setState({
+		// 			loading:false,
+		// 			books:jsonResult.GoodreadsResponse.reviews.review
+		// 		});
+		// 		localStorage.setItem('bookData',JSON.stringify(jsonResult.GoodreadsResponse.reviews.review));
+		// 	})
+		// }else{
+		// 	if(localStorage.getItem("bookData")){
+		// 		this.setState({
+		// 			loading:false,
+		// 			books:localStorage.getItem("bookData")
+		// 		});
+		// 	}else{
+				
+		// 		axios.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/78987652.xml?key=dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto&shelf=read&per_page=200',config).then((response)=> {
+        //         var result = convert.xml2json(response.data, {compact: true, spaces: 4});
+		// 		var jsonResult=JSON.parse(result);
+		// 		this.setState({
+		// 			loading:false,
+		// 			books:jsonResult.GoodreadsResponse.reviews.review
+		// 		});
+		// 			localStorage.setItem('bookData',JSON.stringify(jsonResult.GoodreadsResponse.reviews.review));
+		// 		})
+
+		// 	}
+		// } 
 	}
 
 	renderBooks(){

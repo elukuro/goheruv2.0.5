@@ -22,14 +22,16 @@ class Blog extends Component{
 	}
 
 	renderBlog(){
-		return _.map(this.state.blog,item=>{
-			return(
-				<li key={item.id}>
-					<p className="text">{item.created_at} #{item.category}</p>
-					<h4 className="heading"><Link to={`/notes/${item.id}`}>{item.title}</Link></h4>
-				</li>
-			)
-		})
+		if(this.state.blog.length >0){
+			return _.map(this.state.blog,item=>{
+				return(
+					<li key={item.id}>
+						<p className="text">{item.created_at} #{item.category}</p>
+						<h4 className="heading"><Link to={`/notes/${item.id}`}>{item.title}</Link></h4>
+					</li>
+				)
+			})
+		}
 	}
 
 

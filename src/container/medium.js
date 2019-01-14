@@ -20,7 +20,7 @@ class Medium extends Component{
 
 		var now = new Date();
 		
-		if(now.getHours() > 4 && now.getHours() < 10){
+		if(now.getHours() > 12 ){
 			localStorage.removeItem("mediumData");
 			axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto').then((response)=> {
 				this.setState({medium:response.data.items,loading:false});
@@ -28,19 +28,21 @@ class Medium extends Component{
 			})
 		}else{
 			if(localStorage.getItem("mediumData")){
+				this.setState({
+					loading:false,
+					medium:JSON.parse(localStorage.getItem("mediumData"))
+				});
+			}else{
 				axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto').then((response)=> {
 					this.setState({medium:response.data.items,loading:false});
 					localStorage.setItem('mediumData',JSON.stringify(response.data.items));
 				})
-			}else{
-				this.setState({
-					medium:JSON.parse(localStorage.getItem("mediumData"))
-				});
 			}
 		}
 	}
 
 	renderMedium(){
+		if(this.state.medium.length >0){
 		return _.map(this.state.medium,(item,key)=>{
 			return(
 				<li key={key}>
@@ -50,6 +52,9 @@ class Medium extends Component{
 				</li>
 			)
 		})
+		}else{
+			console.log("medium list is not rendered")
+		}
 	}
 
 

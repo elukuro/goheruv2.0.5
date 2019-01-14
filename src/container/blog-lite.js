@@ -31,7 +31,7 @@ class BlogLite extends Component{
 		})
 		  
 		var now = new Date();
-		if(now.getHours() > 4 && now.getHours() < 10){
+		if(now.getHours() > 12 ){
 			localStorage.removeItem("mediumData");
 			// //alert("di dalam lebih dari jam 5")
 			axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto').then((response)=> {
@@ -42,16 +42,16 @@ class BlogLite extends Component{
 			})
 		}else{
 			if(localStorage.getItem("mediumData")){
+				this.setState({
+					medium:JSON.parse(localStorage.getItem("mediumData"))
+				});
+			}else{
 				axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto').then((response)=> {
 					localStorage.setItem('mediumData',JSON.stringify(response.data.items));
 					this.setState({
 						medium:JSON.parse(localStorage.getItem("mediumData"))
 					});
-				})	
-			}else{
-				this.setState({
-					medium:JSON.parse(localStorage.getItem("mediumData"))
-				});
+				})
 			}
 			
 		}
@@ -67,27 +67,34 @@ class BlogLite extends Component{
 
 
 	renderBlog(){
-
-		return _.map(this.state.blog.slice(0,2),item=>{
-			return(
-				<li key={item.id}>
-					<p className="text">{item.created_at} #{item.category}</p>
-					<h4 className="heading"><Link to={`/notes/${item.id}`}>{item.title}</Link></h4>
-				</li>
-			)
-		})
+		if(this.state.medium.length >0){
+			return _.map(this.state.blog.slice(0,2),item=>{
+				return(
+					<li key={item.id}>
+						<p className="text">{item.created_at} #{item.category}</p>
+						<h4 className="heading"><Link to={`/notes/${item.id}`}>{item.title}</Link></h4>
+					</li>
+				)
+			})
+		}else{
+			console.log("blog is not rendered")
+		}
 	}
 
 	renderMedium(){
-		return _.map(this.state.medium.slice(0,3),(item,key)=>{
-			return(
-				<li key={key}>
-					<p className="text">{Moment(item.pubDate).format('DD MMM YYYY')} #{item.categories[0]}
-					</p>
-					<h4 className="heading"><Link to={`/medium/${key}`}>{item.title}</Link></h4>
-				</li>
-			)
-		})
+		if(this.state.medium.length >0){
+			return _.map(this.state.medium.slice(0,3),(item,key)=>{
+				return(
+					<li key={key}>
+						<p className="text">{Moment(item.pubDate).format('DD MMM YYYY')} #{item.categories[0]}
+						</p>
+						<h4 className="heading"><Link to={`/medium/${key}`}>{item.title}</Link></h4>
+					</li>
+				)
+			})
+		}else{
+			console.log("medium not rendered")
+		}
 	}
 
 
