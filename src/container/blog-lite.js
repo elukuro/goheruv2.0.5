@@ -31,7 +31,7 @@ class BlogLite extends Component{
 		})
 		  
 		var now = new Date();
-		if(now.getHours() > 12 ){
+		if(now.getHours() > 4 ){
 			localStorage.removeItem("mediumData");
 			// //alert("di dalam lebih dari jam 5")
 			axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto').then((response)=> {

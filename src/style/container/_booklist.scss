@@ -46,6 +46,11 @@
 					margin-bottom:3px;
 					font-size: $title;
 					margin-top:10px;
+					span{
+						background:$lite-gray;
+						padding:3px;
+						border-radius:3px;
+					}
 				}
 				
 				.text{
