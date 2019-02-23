@@ -73,8 +73,7 @@ class Books extends Component{
 					<img src={item.book.image_url._text} alt={item.book.image_url._text}/>
 					<div className="book-list-item">
 						<p className="text">Avg.Rating: ( {item.book.average_rating._text} ) </p>
-						<p className="text">Read / update: {Moment(item.date_updated).format('MMM YYYY')}</p>
-						<h4 className="heading">{item.book.title._text}</h4>
+						<h4 title={item.book.title._text} className="heading">{item.book.title._text}</h4>
 						<span className="author"> Author : {item.book.authors.author.name._text}</span>
 					</div>
 				</a>
