@@ -32,7 +32,7 @@ class WorkList extends Component{
 			var image="http://goheru.com/public/"+item.thumbnail;
 			return(
 				<li key={item.id} className="work-list-card">
-					<img src={image} className="thumbnail"/>
+					{/* <img src={image} className="thumbnail"/> */}
 					<div className="work-list-item">
 						<h4 className="heading"><a href={item.link}>{item.title}</a></h4>
 						<p className="text">{cleanSpace}</p>

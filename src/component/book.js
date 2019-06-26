@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Nav from '../container/nav';
 import Jumbo from '../container/jumbo';
-import Career from '../container/career';
-import Skill from '../container/skill';
-import Blog from '../container/blog';
+import Book from '../container/book';
 
-class Notes extends Component{
+class Books extends Component{
 	constructor(props){
 		super(props);
 		this.state={
@@ -20,12 +18,12 @@ class Notes extends Component{
 	render(){
 		return(
 			<div>
-				<Nav active="notes"/>
-				<Jumbo image="big-plant.png" page="notes" alt="big-plant"/>
-				<Blog/>
+				<Nav active="book"/>
+				<Jumbo image="big-plant.png" page="book" alt="big-plant"/>
+				<Book/>
 			</div>
 		)
 	}
 }
 
-export default Notes;
+export default Books;

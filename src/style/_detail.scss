@@ -30,9 +30,14 @@
 	.detail-content{
 		p{
 			font-family: $font-roboto;
-			font-size: $paragraph;
+			font-size: 20px;
+			line-height: 1.5em;
 			color:$bold;
 			padding:8px 0px;
+			font-weight: 400;
+			-webkit-text-stroke-width: .05px;
+			-webkit-text-stroke-color: white;
+			-webkit-font-smoothing: antialiased;
 		}
 		a{
 			font-size: $reguler;
@@ -64,5 +69,32 @@
 				padding:10px 0px;
 			}
 		}
+	}
+}
+.detail-medium{
+	figure{
+		img{
+			width:100%;
+		}
+	}
+	figcaption{
+		text-align: center;
+	}
+	p strong{
+		display: inline-block !important;
+	}
+	.detail-medium-original-source{
+		display: block;
+		text-align: left;
+		a{
+			text-align: center;
+			color:$gray;
+			font-size: 10px;
+			text-decoration:underline;
+			&:hover{
+				//text-decoration: underline;
+			}
+		}
+		
 	}
 }

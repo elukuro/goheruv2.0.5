@@ -26,7 +26,7 @@ class App extends Component{
 			return(
 				<div>
 					<Nav active="home"/>
-					<Jumbo image="sunrise.png" page="default"/>
+					<Jumbo image="sunrise.png" page="default" alt="sunrice"/>
 					<Career/>
 					<Skill/>
 					<BlogLite/>

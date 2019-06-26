@@ -29,11 +29,12 @@
 		}
 	}
 	.work-list{
+		width:100%;
 		ul{
 			display: block;
 			margin:40px auto 10px auto;
 			.work-list-card{
-				width:80%;
+				width:100%;
 				margin:0 auto;
 				margin-bottom:20px;
 				display: block;
@@ -42,5 +43,32 @@
 				margin-right:auto;
 			}
 		}
+	}
+	.book{
+		width:80%;
+	}
+	.book-list{
+		ul{
+			display: block;
+			width:100%;
+			.book-list-card{
+				width:100%;
+				margin:0 auto;
+				margin-bottom:20px;
+				display: block;
+			}
+			.book-list-card:last-child{
+				margin-right:auto;
+			}
+		}
+	}
+	.book-list-wrapper ul li img{
+		width:18%;
+	}
+	.nav ul li{
+		margin-left: 8px;
+	}
+	.nav ul li .link{
+		font-size: 14px;
 	}
 }

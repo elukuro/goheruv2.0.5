@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Nav from '../container/nav';
 import Jumbo from '../container/jumbo';
-import Career from '../container/career';
-import Skill from '../container/skill';
-import Blog from '../container/blog';
+import Medium from '../container/medium';
 
 class Notes extends Component{
 	constructor(props){
@@ -20,9 +18,9 @@ class Notes extends Component{
 	render(){
 		return(
 			<div>
-				<Nav active="notes"/>
-				<Jumbo image="big-plant.png" page="notes" alt="big-plant"/>
-				<Blog/>
+				<Nav active="medium"/>
+				<Jumbo image="big-plant.png" page="medium" alt="big-plant"/>
+				<Medium/>
 			</div>
 		)
 	}
