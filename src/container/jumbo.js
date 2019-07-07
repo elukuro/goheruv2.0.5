@@ -14,7 +14,8 @@ class Jumbo extends Component{
 			loading:true,
 			mediumHeading:"When I publish at medium it will appears here:D ",
 			workHeading:"Place to preview my work and archivement, my personal project, others",
-			bookHeading:"Books is the windows of the world before internet"
+			bookHeading:"Books is the windows of the world before internet",
+			workoutHeading:"Run Ruun Ruuuuun!"
 		}
 	}
 
@@ -48,6 +49,10 @@ class Jumbo extends Component{
 		}else if(page=='book'){
 			return(
 				<p className="headline">{this.state.bookHeading}</p>
+			)
+		}else if(page=='workout'){
+			return(
+				<p className="headline">{this.state.workoutHeading}</p>
 			)
 		}
 	}

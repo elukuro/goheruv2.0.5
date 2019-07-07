@@ -1,0 +1,37 @@
+.workout{
+    background:$white !important;
+    h3{
+        color:$black;
+        font-weight:400;
+        font-size:20px;
+    }
+    &-list{
+        &-elem{
+            display:flex;
+            justify-content: space-between;
+            .workout-item{
+                p{
+                    display:block;
+                    font-size:80px;
+                    color:$black;
+                    padding:0;
+                    margin:0;
+                    text-align:center;
+                    span{
+                        font-size:20px;
+                        color:$black;
+                        display:inline-block;
+                        position:relative;
+                        left:-10px;
+                    }
+                }
+                span{
+                    color:$yellow;
+                    font-size:12px;
+                    text-align:center;
+                    display:block;
+                }
+            }
+        }
+    }
+}

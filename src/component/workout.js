@@ -16,7 +16,7 @@ class Work extends Component{
 		return(
 			<div>
 				<Nav active="workout"/>
-				<Jumbo image="code_2.png" page="work" alt="big-plant"/>
+				<Jumbo image="shoes.png" page="workout" alt="workout"/>
 				<WorkoutList/>
 			</div>
 		)

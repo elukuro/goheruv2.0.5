@@ -38,7 +38,6 @@ class DetailMedium extends Component{
 				return(
 					<div className="detail detail-medium" key={item.title}>
 						<p className="date">{Moment(item.pubDate).format('DD MMM YYYY')}  #{item.categories[0]}</p>
-						<h1 className="detail-title">{item.title}</h1>
 						<div className="detail-content" dangerouslySetInnerHTML={{__html: item.content}}></div>
 						<p className="detail-medium-original-source"><a href={item.link}>Read original source from medium</a></p>
 						<Link className="detail-link" to="/medium"> Back to List</Link>

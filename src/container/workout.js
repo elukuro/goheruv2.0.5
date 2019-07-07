@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import _ from 'lodash';
+import CountUp from 'react-countup';
+
 
 class WorkList extends Component{
 
@@ -16,30 +18,41 @@ class WorkList extends Component{
 	}
 
 	componentDidMount(){
-		axios.get('https://www.strava.com/api/v3/athletes/24329153/stats?access_token=990d13d1df65bb17994bdeed50b2578df7a5e95c').then((response)=> {
+		var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
+		axios.get('https://cors-anywhere.herokuapp.com/http://goheru.com/workout.json',config).then((response)=> {
             this.setState({workout:response.data.recent_run_totals});
-            this.setState({allworkout:response.data.all_run_totals})
+			// this.setState({allworkout:response.data.all_run_totals})
  		 })
 
 	}
 
 	renderWorkoutList(){
         return(
-            <div>
-                <p>{this.state.workout.count}</p>
-            </div>
+			<div className="workout-list-elem">
+					<div className="workout-item">
+						<p>{this.state.workout.count}</p>
+						<span>Recent Run</span>
+					</div>
+					<div className="workout-item">
+						<p>{Math.round(this.state.workout.distance/1000*10)/10} <span>KM</span></p>
+						<span>Total Distance</span>
+					</div>
+					<div className="workout-item">
+						<p>{Math.round(this.state.workout.moving_time/60/60*10)/10} <span>Hours</span></p>
+						<span>Moving Time</span>
+					</div>
+			</div>
         )
 	}
 
 
 	render(){
 		return(
-			<div className="project work-list">
+			<div className="project workout">
 				<div className="project-wrap">
-					<div className="work-list-wrapper">
-						<ul>
-							{this.renderWorkoutList()}
-						</ul>
+					<div className="workout-list">
+						<h3>Recent Activity</h3>
+						{this.renderWorkoutList()}
 					</div>
 				</div>
 				
