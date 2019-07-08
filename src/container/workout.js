@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import _ from 'lodash';
-import CountUp from 'react-countup';
+import CountUp,{ startAnimation } from 'react-countup';
+import Loading from './loading';
 
 
 class WorkList extends Component{
@@ -13,15 +14,21 @@ class WorkList extends Component{
             workout:{},
             allworkout:{},
 			heading:"",
-			text:{}
+			text:{},
+			loading:true
 		}
 	}
 
 	componentDidMount(){
 		var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
 		axios.get('https://cors-anywhere.herokuapp.com/http://goheru.com/workout.json',config).then((response)=> {
-            this.setState({workout:response.data.recent_run_totals});
-			// this.setState({allworkout:response.data.all_run_totals})
+			this.setState(
+				{
+					workout:response.data.recent_run_totals,
+					allworkout:response.data.all_run_totals,
+					loading:false
+				}
+			);
  		 })
 
 	}
@@ -34,30 +41,57 @@ class WorkList extends Component{
 						<span>Recent Run</span>
 					</div>
 					<div className="workout-item">
-						<p>{Math.round(this.state.workout.distance/1000*10)/10} <span>KM</span></p>
+						<p>{Math.round(this.state.workout.distance/1000*10)/10}<span>KM</span></p>
 						<span>Total Distance</span>
 					</div>
 					<div className="workout-item">
-						<p>{Math.round(this.state.workout.moving_time/60/60*10)/10} <span>Hours</span></p>
+						<p>{Math.round(this.state.workout.moving_time/60/60*10)/10}<span>Hours</span></p>
 						<span>Moving Time</span>
 					</div>
 			</div>
         )
 	}
 
-
-	render(){
+	renderAllTimeWorkoutList(){
 		return(
-			<div className="project workout">
-				<div className="project-wrap">
-					<div className="workout-list">
-						<h3>Recent Activity</h3>
-						{this.renderWorkoutList()}
+			<div className="workout-list-elem">
+					<div className="workout-item">
+						<p>{this.state.allworkout.count}</p>
+						<span>All Run</span>
 					</div>
-				</div>
-				
+					<div className="workout-item">
+						<p>{Math.round(this.state.allworkout.distance/1000*10)/10}<span>KM</span></p>
+						<span>Total Distance</span>
+					</div>
+					<div className="workout-item">
+						<p>{Math.round(this.state.allworkout.moving_time/60/60*10)/10}<span>Hours</span></p>
+						<span>Moving Time</span>
+					</div>
 			</div>
 		)
+	}
+
+
+	render(){
+		if(this.state.loading){
+			return(
+				<Loading/>
+			)
+		}else{
+			return(
+				<div className="project workout">
+					<div className="project-wrap">
+						<div className="workout-list">
+							<h3>Recent Activity</h3>
+							{this.renderWorkoutList()}
+							<h3>All Activity</h3>
+							{this.renderAllTimeWorkoutList()}
+						</div>
+					</div>
+					
+				</div>
+			)
+		}
 	}
 }
 

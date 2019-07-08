@@ -3,12 +3,16 @@
     h3{
         color:$black;
         font-weight:400;
-        font-size:20px;
+        font-size:18px;
+        line-height:1.5em;
+        border-left:4px solid $yellow;
+        padding-left:8px;
     }
     &-list{
         &-elem{
             display:flex;
             justify-content: space-between;
+            margin-bottom:80px;
             .workout-item{
                 p{
                     display:block;
@@ -17,19 +21,20 @@
                     padding:0;
                     margin:0;
                     text-align:center;
+                    position:relative;
                     span{
                         font-size:20px;
                         color:$black;
                         display:inline-block;
                         position:relative;
-                        left:-10px;
                     }
                 }
                 span{
                     color:$yellow;
-                    font-size:12px;
+                    font-size:14px;
                     text-align:center;
                     display:block;
+                    font-weight:400;
                 }
             }
         }

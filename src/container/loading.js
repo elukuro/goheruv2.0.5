@@ -8,10 +8,10 @@ class Loading extends Component{
 	render(){
 		return(
 			<div className="loading">
-			<div className="loading-wrapper">
-				<div className="plant-logo"></div>
-				<h1>homina homina homina..</h1>
-			</div>
+				<div className="loading-wrapper">
+					<div className="plant-logo"></div>
+					<h1>homina homina homina..</h1>
+				</div>
 			</div>
 		)
 	}
