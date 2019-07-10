@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import _ from 'lodash';
-import CountUp,{ startAnimation } from 'react-countup';
 import Loading from './loading';
 
 
@@ -54,18 +53,20 @@ class WorkList extends Component{
 
 	renderAllTimeWorkoutList(){
 		return(
-			<div className="workout-list-elem">
-					<div className="workout-item">
+			<div className="workout-all-list-elem">
+					<div className="workout-item all">
 						<p>{this.state.allworkout.count}</p>
 						<span>All Run</span>
 					</div>
-					<div className="workout-item">
-						<p>{Math.round(this.state.allworkout.distance/1000*10)/10}<span>KM</span></p>
-						<span>Total Distance</span>
-					</div>
-					<div className="workout-item">
-						<p>{Math.round(this.state.allworkout.moving_time/60/60*10)/10}<span>Hours</span></p>
-						<span>Moving Time</span>
+					<div className="other">
+						<div className="workout-item">
+							<p>{Math.round(this.state.allworkout.distance/1000*10)/10}<span>KM</span></p>
+							<span>Total Distance</span>
+						</div>
+						<div className="workout-item moving-time">
+							<p>{Math.round(this.state.allworkout.moving_time/60/60*10)/10}<span>Hours</span></p>
+							<span>Moving Time</span>
+						</div>
 					</div>
 			</div>
 		)
