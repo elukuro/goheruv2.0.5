@@ -18,7 +18,7 @@ class Blog extends Component{
 	componentDidMount(){
 		axios.get('http://goheru.com/public/postJson/all').then((response)=> {
 				this.setState({blog:response.data,loading:false});
- 		 })
+			})
 	}
 
 	renderBlog(){

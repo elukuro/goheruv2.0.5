@@ -20,7 +20,7 @@ class WorkList extends Component{
 
 	componentDidMount(){
 		var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
-		axios.get('https://cors-anywhere.herokuapp.com/http://goheru.com/workout.json',config).then((response)=> {
+		axios.get('http://goheru.com/workout.json',config).then((response)=> {
 			this.setState(
 				{
 					workout:response.data.recent_run_totals,
