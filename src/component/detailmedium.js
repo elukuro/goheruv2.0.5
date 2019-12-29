@@ -15,11 +15,9 @@ class DetailMedium extends Component {
   }
 
   componentDidMount() {
-    const { match } = this.props;
-    const id = match.params;
-    // console.log(id);
-    const URL =
-      "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto";
+    const {match} = this.props;
+    const {id} = match.params;
+    const URL ="https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto";
     axios.get(URL).then(response => {
       this.setState({ content: response.data.items[id], loading: false });
     });
@@ -27,7 +25,7 @@ class DetailMedium extends Component {
 
   renderDetail() {
     const { content, loading } = this.state;
-    const { item } = content.item;
+    const item = content;
     if (loading) {
       return <Loading />;
     }

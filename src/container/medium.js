@@ -20,7 +20,7 @@ class Medium extends Component{
 	componentDidMount(){
 
 		var now = new Date();
-		
+
 		if(now.getHours() > 4 ){
 			localStorage.removeItem("mediumData");
 			axios.get('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto').then((response)=> {
@@ -44,16 +44,16 @@ class Medium extends Component{
 		axios.get('http://goheru.com/public/postJson/all').then((response)=> {
 				this.setState({blog:response.data,loading:false});
 		})
-		  
+
 	}
 
-	
+
 
 	renderMedium(){
 		const divStyle = {
 			padding: '2px 4px',
 			background:'#f2c94c',
-			'border-radius':'4px',
+			borderRadius:'4px',
 			color:'#fff'
 		  };
 		if(this.state.medium.length >0){
@@ -105,11 +105,11 @@ class Medium extends Component{
 							</ul>
 						</div>
 					</div>
-					
+
 				</div>
 			)
 		}
-		
+
 	}
 }
 
