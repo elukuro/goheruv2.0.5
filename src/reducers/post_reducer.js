@@ -1,5 +1,6 @@
 import {LANDINGPAGE_FETCH} from '../action/index';
-import _ from 'lodash';
+
+// eslint-disable-next-line no-unused-vars
 export default function(state={},action){
 
 	switch(action.type){

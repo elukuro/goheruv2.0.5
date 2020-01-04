@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import _ from "lodash";
 import convert from "xml-js";
 import Loading from "./loading";
+import Utils from "../_Utils";
 
 class Books extends Component {
   constructor(props) {
@@ -22,20 +23,28 @@ class Books extends Component {
     const GOODREAD = "https://www.goodreads.com/review/list/78987652.xml";
     const KEY = "dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto";
 
-    axios.get(`${CROS_ANYWHERE}/${GOODREAD}?key=${KEY}&shelf=read&per_page=200`,config)
-      .then(response => {
-        const result = convert.xml2json(response.data, { compact: true, spaces: 4 });
-        const jsonResult = JSON.parse(result);
+    if(Utils.getCookie('cookie') === "ok"){
         this.setState({
-          loading: false,
-          books: jsonResult.GoodreadsResponse.reviews.review
+          loading:false,
+          books:JSON.parse(localStorage.getItem('bookData'))
+        })
+    }else{
+      axios.get(`${CROS_ANYWHERE}/${GOODREAD}?key=${KEY}&shelf=read&per_page=200`,config)
+        .then(response => {
+          const result = convert.xml2json(response.data, { compact: true, spaces: 4 });
+          const jsonResult = JSON.parse(result);
+          this.setState({
+            loading: false,
+            books: jsonResult.GoodreadsResponse.reviews.review
+          });
+          Utils.generateCookies('cookie');
+          localStorage.setItem(
+            "bookData",
+            JSON.stringify(jsonResult.GoodreadsResponse.reviews.review)
+          );
         });
-        // localStorage.setItem(
-        //   "bookData",
-        //   JSON.stringify(jsonResult.GoodreadsResponse.reviews.review)
-        // );
-      });
-  }
+      }
+    };
 
   renderBooks() {
     const { books } = this.state;

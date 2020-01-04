@@ -40,23 +40,6 @@ class BlogLite extends Component {
     // if (now.getHours() > 4) {
     //   localStorage.removeItem("mediumData");
     //   // //alert("di dalam lebih dari jam 5")
-
-    // } else {
-    //   if (localStorage.getItem("mediumData")) {
-    //     this.setState({
-    //       medium: JSON.parse(localStorage.getItem("mediumData"))
-    //     });
-    //   } else {
-    //     axios
-    //       .get("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto")
-    //       .then(response => {
-    //         localStorage.setItem("mediumData", JSON.stringify(response.data.items));
-    //         this.setState({
-    //           medium: JSON.parse(localStorage.getItem("mediumData"))
-    //         });
-    //       });
-    //   }
-    // }
   }
 
   renderText() {
@@ -134,7 +117,7 @@ class BlogLite extends Component {
         </div>
         <div className="center">
           <img src={Image} className="image" alt="plant" width="100px" />
-          <p className="right text footer-text">craft with love 2016-2019</p>
+          <p className="right text footer-text">craft with Love</p>
         </div>
       </div>
     );

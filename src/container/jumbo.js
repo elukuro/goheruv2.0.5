@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import _ from "lodash";
+import PropTypes from 'prop-types';
 import Loading from "./loading";
 
 class Jumbo extends Component {
@@ -13,8 +14,10 @@ class Jumbo extends Component {
       loading: true,
       mediumHeading: "Article that maybe worth to read (or not)",
       workHeading: "Place to preview my work and archivement, my personal project, others",
-      bookHeading: "Read fourty file minute a day and feel the direfence",
-      workoutHeading: "Run Ruun Ruuuuun!"
+      bookHeading: "Read fourty file minute a day and feel the diference",
+      workoutHeading: "Run Ruun Ruuuuun!",
+      // eslint-disable-next-line max-len
+      homepageHeading: "I'am ISTJ-A that work as web developer, feed my brain with book and strength my mind with running",
     };
   }
 
@@ -26,16 +29,24 @@ class Jumbo extends Component {
 
   renderPost() {
     const { page } = this.props;
-    const { landingpage, workHeading, mediumHeading, bookHeading, workoutHeading } = this.state;
+    const {
+      landingpage,
+      workHeading,
+      mediumHeading,
+      bookHeading,
+      workoutHeading,
+      homepageHeading
+    } = this.state;
     let text = null;
     if (page === "default") {
-      return _.map(landingpage, item => {
-        return (
-          <p key={item.id} className="headline">
-            {item.content}
-          </p>
-        );
-      });
+      // return _.map(landingpage, item => {
+      //   return (
+      //     <p key={item.id} className="headline">
+      //       {item.content}
+      //     </p>
+      //   );
+      // });
+      text = `${homepageHeading}`
     }
     if (page === "notes") {
       return _.map(landingpage, item => {
@@ -76,16 +87,19 @@ class Jumbo extends Component {
           <li>
             <a href="https://twitter.com/heru_hartanto" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-twitter fa-2x" />
+              Twitter
             </a>
           </li>
           <li>
             <a href="https://medium.com/@heruhartanto" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-medium fa-2x" />
+              Medium
             </a>
           </li>
           <li>
             <a href="https://github.com/elukuro" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-github fa-2x" />
+              Github
             </a>
           </li>
           <li>
@@ -95,11 +109,13 @@ class Jumbo extends Component {
               rel="noopener noreferrer"
             >
               <i className="fa fa-linkedin fa-2x" />
+              LinkedIn
             </a>
           </li>
           <li>
             <a href="mailto:heruhartanto110291@gmail.com" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-paper-plane fa-2x" />
+              Email
             </a>
           </li>
         </ul>
@@ -111,5 +127,9 @@ class Jumbo extends Component {
 // function mapStateToProps(state){
 // 	return{landingpage:state.posts}
 // }
+
+Jumbo.propTypes = {
+  page:PropTypes.string.isRequired
+}
 
 export default connect(null, {})(Jumbo);
