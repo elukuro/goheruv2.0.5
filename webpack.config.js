@@ -1,24 +1,27 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var webpack = require('webpack')
-var path = require('path')
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require("webpack");
+const path = require("path");
 
-var isProd = process.env.NODE_ENV === 'production' // true or false
-var cssDev = ['style-loader', 'css-loader', 'sass-loader']
-var cssProd = ExtractTextPlugin.extract({
-  fallback: 'style-loader',
-  loader: ['css-loader', 'sass-loader'],
-  publicPath: '/'
-})
-var cssConfig = isProd ? cssProd : cssDev
+// eslint-disable-next-line max-len
+const WriteFileWebpackPlugin = require("./node_modules/write-file-webpack-plugin/dist/WriteFileWebpackPlugin.js");
+
+const isProd = process.env.NODE_ENV === "production"; // true or false
+const cssDev = ["style-loader", "css-loader", "sass-loader"];
+const cssProd = ExtractTextPlugin.extract({
+  fallback: "style-loader",
+  use: ["css-loader", "sass-loader"],
+  publicPath: "/"
+});
+const cssConfig = isProd ? cssProd : cssDev;
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: "./src/index.js"
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'script/[name].bundle.js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "script/[name].bundle.js"
   },
   module: {
     rules: [
@@ -29,39 +32,46 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: "babel-loader"
       },
       {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
-        loader: [
-          'file-loader?name=[name].[ext]&outputPath=images/',
-          'image-webpack-loader'
-        ]
-      },
+        use: ["file-loader?name=[name].[ext]&outputPath=images/", "image-webpack-loader"]
+      }
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, "dist"),
     compress: true,
     hot: true,
     open: false,
-     historyApiFallback: true,
+    historyApiFallback: true
   },
   plugins: [
+    // new CopyPlugin([
+    //   {
+    //     from: './src/**/*js',
+    //     to: 'dist/[hash].[ext]',
+    //     force: true,
+    //   },
+    // ]),
+    new WriteFileWebpackPlugin({
+      test: /\.json$/,
+      useHashIndex: false
+    }),
     new HtmlWebpackPlugin({
-      title: 'web developer | Half marathon runner | bookworm | simple-minded | overthinker',
+      title: "web developer | Half marathon runner | bookworm | simple-minded | overthinker",
       hash: true,
-      template: './src/template/index.html',
+      template: "./src/template/index.html",
       minify: {
-            collapseWhitespace: false
-        },
+        collapseWhitespace: false
+      }
     }),
     new ExtractTextPlugin({
-      filename: 'style/style.css',
+      filename: "style/style.css",
       disable: !isProd,
       allChunks: true
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ]
-}
+};

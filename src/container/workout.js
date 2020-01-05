@@ -1,55 +1,106 @@
-import React, {Component} from 'react';
-import axios from 'axios';
-import {connect} from 'react-redux';
-import _ from 'lodash';
+import React, { Component } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+// import _ from "lodash";
+import Loading from "./loading";
 
-class WorkList extends Component{
+class WorkList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      workout: {},
+      allworkout: {},
+      loading: true
+    };
+  }
 
-	constructor(props){
-		super(props);
-		this.state={
-            workout:{},
-            allworkout:{},
-			heading:"",
-			text:{}
-		}
-	}
+  componentDidMount() {
+    const config = { headers: { "X-Requested-With": "XMLHttpRequest" } };
+    axios.get("http://goheru.com/workout.json", config).then(response => {
+      this.setState({
+        workout: response.data.recent_run_totals,
+        allworkout: response.data.all_run_totals,
+        loading: false
+      });
+    });
+  }
 
-	componentDidMount(){
-		axios.get('https://www.strava.com/api/v3/athletes/24329153/stats?access_token=990d13d1df65bb17994bdeed50b2578df7a5e95c').then((response)=> {
-            this.setState({workout:response.data.recent_run_totals});
-            this.setState({allworkout:response.data.all_run_totals})
- 		 })
+  renderWorkoutList() {
+    const { workout } = this.state;
+    return (
+      <div className="workout-list-elem">
+        <div className="workout-item">
+          <p>{workout.count}</p>
+          <span>Recent Run</span>
+        </div>
+        <div className="workout-item">
+          <p>
+            {Math.round((workout.distance / 1000) * 10) / 10}
+            <span>KM</span>
+          </p>
+          <span>Total Distance</span>
+        </div>
+        <div className="workout-item">
+          <p>
+            {Math.round((workout.moving_time / 60 / 60) * 10) / 10}
+            <span>Hours</span>
+          </p>
+          <span>Moving Time</span>
+        </div>
+      </div>
+    );
+  }
 
-	}
+  renderAllTimeWorkoutList() {
+    const { allworkout } = this.state;
+    return (
+      <div className="workout-all-list-elem">
+        <div className="workout-item all">
+          <p>{allworkout.count}</p>
+          <span>All Run</span>
+        </div>
+        <div className="other">
+          <div className="workout-item">
+            <p>
+              {Math.round((allworkout.distance / 1000) * 10) / 10}
+              <span>KM</span>
+            </p>
+            <span>Total Distance</span>
+          </div>
+          <div className="workout-item moving-time">
+            <p>
+              {Math.round((allworkout.moving_time / 60 / 60) * 10) / 10}
+              <span>Hours</span>
+            </p>
+            <span>Moving Time</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-	renderWorkoutList(){
-        return(
-            <div>
-                <p>{this.state.workout.count}</p>
-            </div>
-        )
-	}
-
-
-	render(){
-		return(
-			<div className="project work-list">
-				<div className="project-wrap">
-					<div className="work-list-wrapper">
-						<ul>
-							{this.renderWorkoutList()}
-						</ul>
-					</div>
-				</div>
-				
-			</div>
-		)
-	}
+  render() {
+    const { loading } = this.state;
+    if (loading) {
+      return <Loading />;
+    }
+    return (
+      <div className="project workout">
+        <div className="project-wrap">
+          <div className="workout-list">
+            <h3>Recent Activity</h3>
+            {this.renderWorkoutList()}
+            <h3>All Activity</h3>
+            {this.renderAllTimeWorkoutList()}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 // function mapStateToProps(state){
 // 	return{landingpage:state.posts}
 // }
 
-export default connect(null,{})(WorkList);
+export default connect(null, {})(WorkList);

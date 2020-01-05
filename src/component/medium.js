@@ -1,29 +1,20 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import Nav from '../container/nav';
-import Jumbo from '../container/jumbo';
-import Medium from '../container/medium';
+import React, { Component } from "react";
+import Nav from "../container/nav";
+import Jumbo from "../container/jumbo";
+import Medium from "../container/medium";
 
-class Notes extends Component{
-	constructor(props){
-		super(props);
-		this.state={
-			hello:"this is a state and try change state"
-		}
-	}
+class Notes extends Component {
+  componentDidMount() {}
 
-	componentDidMount(){
-	}
-
-	render(){
-		return(
-			<div>
-				<Nav active="medium"/>
-				<Jumbo image="big-plant.png" page="medium" alt="big-plant"/>
-				<Medium/>
-			</div>
-		)
-	}
+  render() {
+    return (
+      <div>
+        <Nav active="medium" />
+        <Jumbo image="pencil.png" page="medium" alt="pencil" />
+        <Medium />
+      </div>
+    );
+  }
 }
 
 export default Notes;

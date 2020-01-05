@@ -1,113 +1,97 @@
-import React, {Component} from 'react';
-import axios from 'axios';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import _ from 'lodash';
-import Loading from './loading';
-import Moment from 'moment';
-import convert from 'xml-js';
+/* eslint-disable no-underscore-dangle */
+import React, { Component } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+import _ from "lodash";
+import convert from "xml-js";
+import Loading from "./loading";
+import Utils from "../_Utils";
 
-class Books extends Component{
+class Books extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: {},
+      loading: true
+    };
+  }
 
-	constructor(props){
-		super(props);
-		this.state={
-			books:{},
-			loading:true
-		}
-	}
+  componentDidMount() {
+    // const now = new Date();
+    const config = { headers: { "X-Requested-With": "XMLHttpRequest" } };
+    const CROS_ANYWHERE = "https://cors-anywhere.herokuapp.com";
+    const GOODREAD = "https://www.goodreads.com/review/list/78987652.xml";
+    const KEY = "dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto";
 
-	componentDidMount(){
-		var now = new Date();
-		var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
-		axios.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/78987652.xml?key=dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto&shelf=read&per_page=200',config).then((response)=> {
-                var result = convert.xml2json(response.data, {compact: true, spaces: 4});
-				var jsonResult=JSON.parse(result);
-				this.setState({
-					loading:false,
-					books:jsonResult.GoodreadsResponse.reviews.review
-				});
-				localStorage.setItem('bookData',JSON.stringify(jsonResult.GoodreadsResponse.reviews.review));
-		})
+    if(Utils.getCookie('cookie') === "ok"){
+        this.setState({
+          loading:false,
+          books:JSON.parse(localStorage.getItem('bookData'))
+        })
+    }else{
+      axios.get(`${CROS_ANYWHERE}/${GOODREAD}?key=${KEY}&shelf=read&per_page=200`,config)
+        .then(response => {
+          const result = convert.xml2json(response.data, { compact: true, spaces: 4 });
+          const jsonResult = JSON.parse(result);
+          this.setState({
+            loading: false,
+            books: jsonResult.GoodreadsResponse.reviews.review
+          });
+          Utils.generateCookies('cookie');
+          localStorage.setItem(
+            "bookData",
+            JSON.stringify(jsonResult.GoodreadsResponse.reviews.review)
+          );
+        });
+      }
+    };
 
+  renderBooks() {
+    const { books } = this.state;
+    return _.map(books, (item, key) => {
+      return (
+        <li key={key} className="book-list-card">
+          <a href={item.url._cdata}>
+            <img src={item.book.image_url._text} alt={item.book.image_url._text} />
+            <div className="book-list-item">
+              <p className="text">
+                Avg.Rating: (
+                { item.book.average_rating._text}
+                )
+              </p>
+              <h4 title={item.book.title._text} className="heading">
+                {item.book.title._text}
+              </h4>
+              <span className="author">
+                Author :
+                {item.book.authors.author.name._text}
+              </span>
+            </div>
+          </a>
+        </li>
+      );
+    });
+  }
 
-		// if(now.getHours() > 12){
-		// 	localStorage.removeItem("bookData");
-		// 	var config = {headers: {"X-Requested-With" : "XMLHttpRequest"}};
-		// 	axios.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/78987652.xml?key=dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto&shelf=read&per_page=200',config).then((response)=> {
-        //         var result = convert.xml2json(response.data, {compact: true, spaces: 4});
-		// 		var jsonResult=JSON.parse(result);
-		// 		this.setState({
-		// 			loading:false,
-		// 			books:jsonResult.GoodreadsResponse.reviews.review
-		// 		});
-		// 		localStorage.setItem('bookData',JSON.stringify(jsonResult.GoodreadsResponse.reviews.review));
-		// 	})
-		// }else{
-		// 	if(localStorage.getItem("bookData")){
-		// 		this.setState({
-		// 			loading:false,
-		// 			books:localStorage.getItem("bookData")
-		// 		});
-		// 	}else{
-				
-		// 		axios.get('https://cors-anywhere.herokuapp.com/https://www.goodreads.com/review/list/78987652.xml?key=dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto&shelf=read&per_page=200',config).then((response)=> {
-        //         var result = convert.xml2json(response.data, {compact: true, spaces: 4});
-		// 		var jsonResult=JSON.parse(result);
-		// 		this.setState({
-		// 			loading:false,
-		// 			books:jsonResult.GoodreadsResponse.reviews.review
-		// 		});
-		// 			localStorage.setItem('bookData',JSON.stringify(jsonResult.GoodreadsResponse.reviews.review));
-		// 		})
-
-		// 	}
-		// } 
-	}
-
-	renderBooks(){
-		return _.map(this.state.books,(item,key)=>{
-			return(
-				<li key={key} className="book-list-card">
-				<a href={item.url._cdata}>
-					<img src={item.book.image_url._text} alt={item.book.image_url._text}/>
-					<div className="book-list-item">
-						<p className="text">Avg.Rating: ( {item.book.average_rating._text} ) </p>
-						<h4 title={item.book.title._text} className="heading">{item.book.title._text}</h4>
-						<span className="author"> Author : {item.book.authors.author.name._text}</span>
-					</div>
-				</a>
-				</li>
-			)
-		})
-	}
-
-
-	render(){
-		if(this.state.loading){
-			return(
-				<Loading/>
-			)
-		}else{
-			return(
-				<div className="book">
-					<div className="book-list">
-						<div className="book-list-wrapper">
-							<ul>
-								{this.renderBooks()}
-							</ul>
-						</div>
-					</div>
-					
-				</div>
-			)
-		}
-		
-	}
+  render() {
+    const { loading } = this.state;
+    if (loading) {
+      return <Loading />;
+    }
+    return (
+      <div className="book">
+        <div className="book-list">
+          <div className="book-list-wrapper">
+            <ul>{this.renderBooks()}</ul>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 // function mapStateToProps(state){
 // 	return{landingpage:state.posts}
 // }
 
-export default connect(null,{})(Books);
+export default connect(null, {})(Books);

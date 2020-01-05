@@ -9,10 +9,10 @@
 
 	ul{
 		display: flex;
-  		flex-direction: row;
+    flex-direction: row;
 		flex-wrap: wrap;
 		margin: 0 auto;
-    	width: 631px;
+    	width: 800px;
   		li{
 			a{
 				text-decoration:none;
@@ -20,12 +20,12 @@
 				display:block;
 				width:100%;
 			}
-			width:300px;
+			width:30%;
 			margin-right:1.8%;
 			display:grid;
 			grid-auto-flow: column;
 			border: 2px solid $gray;
-    		border-radius: 5px;
+      border-radius: 5px;
 			background: $white;
 			margin-bottom:1.8%;
 			img{
@@ -57,7 +57,7 @@
 						border-radius:3px;
 					}
 				}
-				
+
 				.text{
 					font-size: $lite;
 				}

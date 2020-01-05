@@ -1,77 +1,135 @@
-import React, {Component} from 'react';
-import axios from 'axios';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import _ from 'lodash';
-import Loading from './loading';
+/* eslint-disable global-require */
+import React, { Component } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+import _ from "lodash";
+import PropTypes from 'prop-types';
+import Loading from "./loading";
 
-class Jumbo extends Component{
+class Jumbo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      landingpage: {},
+      loading: true,
+      mediumHeading: "Article that maybe worth to read (or not)",
+      workHeading: "Place to preview my work and archivement, my personal project, others",
+      bookHeading: "Read fourty file minute a day and feel the diference",
+      workoutHeading: "Run Ruun Ruuuuun!",
+      // eslint-disable-next-line max-len
+      homepageHeading: "I'am ISTJ-A that work as web developer, feed my brain with book and strength my mind with running",
+    };
+  }
 
-	constructor(props){
-		super(props);
-		this.state={
-			landingpage:{},
-			loading:true,
-			mediumHeading:"When I publish at medium it will appears here:D ",
-			workHeading:"Place to preview my work and archivement, my personal project, others",
-			bookHeading:"Books is the windows of the world before internet"
-		}
-	}
+  componentDidMount() {
+    axios.get("http://goheru.com/public/landingpageJson").then(response => {
+      this.setState({ landingpage: response.data, loading: false });
+    });
+  }
 
-	componentDidMount(){
-		axios.get('http://goheru.com/public/landingpageJson').then((response)=> {
-    			this.setState({landingpage:response.data,loading:false});
- 		 })
-	}
-	renderPost(){
-		const page=this.props.page;
-		if(page=='default'){
-			return _.map(this.state.landingpage,item=>{
-				return(
-					<p key={item.id} className="headline">{item.content}</p>
-				)
-			})
-		}else if(page=='notes'){
-			return _.map(this.state.landingpage,item=>{
-				return(
-					<p key={item.id} className="headline">{item.content_admin}</p>
-				)
-			})
-		}else if(page=='work'){
-			return(
-				<p className="headline">{this.state.workHeading}</p>
-			)
-		}else if(page=='medium'){
-				return(
-					<p className="headline">{this.state.mediumHeading}</p>
-				)
-		}else if(page=='book'){
-			return(
-				<p className="headline">{this.state.bookHeading}</p>
-			)
-		}
-	}
-	render(){
-		if(this.state.loading){
-			return(
-				<Loading/>
-			)
-		}else{
-			return(
-				<div className="jumbo">
-					<img src={require('../images/'+this.props.image)} alt="jumbo" className="image"/>
-					{this.renderPost()}
-					<ul className={(this.props.page=='default') ? 'social-media' : 'social-media hide'}>
-						<li><a href="https://twitter.com/heru_hartanto" target="_blank"><i className="fa fa-twitter fa-2x"></i></a> </li><li><a href="https://medium.com/@heruhartanto" target="_blank"><i className="fa fa-medium fa-2x"></i></a></li><li><a href="https://github.com/elukuro" target="_blank"><i className="fa fa-github fa-2x"></i></a></li><li><a href="https://www.linkedin.com/in/heru-hartanto-618b575b" target="_blank"><i className="fa fa-linkedin fa-2x"></i></a></li><li><a href="mailto:heruhartanto110291@gmail.com" target="_blank"><i className="fa fa-paper-plane fa-2x"></i></a></li>
-	    			</ul>
-				</div>
-			)
-		}
-	}
-}	
+  renderPost() {
+    const { page } = this.props;
+    const {
+      landingpage,
+      workHeading,
+      mediumHeading,
+      bookHeading,
+      workoutHeading,
+      homepageHeading
+    } = this.state;
+    let text = null;
+    if (page === "default") {
+      // return _.map(landingpage, item => {
+      //   return (
+      //     <p key={item.id} className="headline">
+      //       {item.content}
+      //     </p>
+      //   );
+      // });
+      text = `${homepageHeading}`
+    }
+    if (page === "notes") {
+      return _.map(landingpage, item => {
+        return (
+          <p key={item.id} className="headline">
+            {item.content_admin}
+          </p>
+        );
+      });
+    }
+    if (page === "work") {
+      text = `${workHeading}`;
+    }
+    if (page === "medium") {
+      text = `${mediumHeading}`;
+    } else if (page === "book") {
+      text = `${bookHeading}`;
+    } else if (page === "workout") {
+      text = `${workoutHeading}`;
+    }
+    return text;
+  }
+
+  render() {
+    const { loading } = this.state;
+    const { image, page } = this.props;
+    const headline = this.renderPost();
+    // eslint-disable-next-line import/no-dynamic-require
+    const jumboImage = require(`../images/${image}`);
+    if (loading) {
+      return <Loading />;
+    }
+    return (
+      <div className="jumbo">
+        <img src={jumboImage} alt="jumbo" className="image" />
+        <div className="headline">{headline}</div>
+        <ul className={page === "default" ? "social-media" : "social-media hide"}>
+          <li>
+            <a href="https://twitter.com/heru_hartanto" target="_blank" rel="noopener noreferrer">
+              <i className="fa fa-twitter fa-2x" />
+              Twitter
+            </a>
+          </li>
+          <li>
+            <a href="https://medium.com/@heruhartanto" target="_blank" rel="noopener noreferrer">
+              <i className="fa fa-medium fa-2x" />
+              Medium
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/elukuro" target="_blank" rel="noopener noreferrer">
+              <i className="fa fa-github fa-2x" />
+              Github
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/heru-hartanto-618b575b"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa fa-linkedin fa-2x" />
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="mailto:heruhartanto110291@gmail.com" target="_blank" rel="noopener noreferrer">
+              <i className="fa fa-paper-plane fa-2x" />
+              Email
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
+  }
+}
 
 // function mapStateToProps(state){
 // 	return{landingpage:state.posts}
 // }
 
-export default connect(null,{})(Jumbo);
+Jumbo.propTypes = {
+  page:PropTypes.string.isRequired
+}
+
+export default connect(null, {})(Jumbo);
