@@ -2,7 +2,7 @@ const Utils = {
    generateCookies:(cookieName) => {
     const now = new Date();
     const time = now.getTime();
-    const expireTime = time + 1000*60;
+    const expireTime = time + 1000*60*60*6;
     now.setTime(expireTime);
     document.cookie = `${cookieName}=ok;expires='${now.toGMTString()}';path=/`;
   },

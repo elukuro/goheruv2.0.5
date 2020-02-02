@@ -14,7 +14,7 @@
 	}
 	.detail-link{
 		text-align: center;
-		font-size: $paragraph;
+		font-size: $posting;
 		color:$bold;
 		font-weight: 300;
 		text-decoration: underline;
@@ -25,19 +25,23 @@
 	.detail-title{
 		font-size: $heading;
 		color:$bold;
-		
+
 	}
 	.detail-content{
+
 		p{
 			font-family: $font-roboto;
-			font-size: 20px;
+			font-size: $posting;
 			line-height: 1.5em;
 			color:$bold;
 			padding:8px 0px;
 			font-weight: 400;
 			-webkit-text-stroke-width: .05px;
 			-webkit-text-stroke-color: white;
-			-webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased;
+      a{
+        font-size:$posting;
+      }
 		}
 		a{
 			font-size: $reguler;
@@ -54,25 +58,52 @@
 		}
 		h1,h2,h3,h4,strong,b{
 			font-family: $font-roboto;
-			font-size: $title;
+			font-size: $posting_heading;
 			color:$bold;
 			display: block;
-			padding-bottom:3px;
+			padding:8px 0px;
 		}
 		ol{
 			margin:0;
-			padding:0;
+      padding:0;
+      margin:0px 0px 0px 0px;
+      padding:0px 0px 0px 30px;
 			li{
 				font-family: $font-roboto;
-				font-size: $reguler;
+				font-size: $posting;
 				color:$bold;
-				padding:10px 0px;
+        padding:10px 0px;
+        line-height: 1.5em;
+        color:$bold;
+        -webkit-text-stroke-width: .05px;
+        -webkit-text-stroke-color: white;
+        -webkit-font-smoothing: antialiased;
+        list-style-position: outside;
+        list-style-type:decimal;
 			}
-		}
+    }
+    ul{
+      margin:0px 0px 0px 0px;
+      padding:0px 0px 0px 30px;
+      li{
+        font-family: $font-roboto;
+				font-size: $posting;
+				color:$bold;
+        padding:10px 0px;
+        line-height: 1.5em;
+        color:$bold;
+        -webkit-text-stroke-width: .05px;
+        -webkit-text-stroke-color: white;
+        -webkit-font-smoothing: antialiased;
+        list-style-position: outside;
+        list-style-type:disc;
+      }
+    }
 	}
 }
 .detail-medium{
 	figure{
+    margin:0;
 		img{
 			width:100%;
 		}
@@ -95,6 +126,6 @@
 				//text-decoration: underline;
 			}
 		}
-		
+
 	}
 }

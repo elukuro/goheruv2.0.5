@@ -1,8 +1,8 @@
-@media only screen 
-  and (min-width: 320px) 
+@media only screen
+  and (min-width: 320px)
   and (max-width: 1024px)  {
   	.body-wrapper{
-  		margin-top:20px !important;
+  		padding-top:20px !important;
   	}
 	.nav,.jumbo,.career,.skill,.project-wrap,.blog-wrap,.detail{
 		width:90% !important;
@@ -10,7 +10,10 @@
 	.jumbo{
 		.image{
 			width: 60%;
-		}
+    }
+    .smaller{
+      width:20%;
+    }
 	}
 	.project-wrap{
 		.image{
