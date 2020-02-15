@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/button-has-type */
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -19,7 +21,9 @@ class Medium extends Component{
 	}
 
 	componentDidMount(){
-    if(Utils.getCookie('cookie-medium') === "ok"){
+    document.body.style.backgroundColor = "#fff";
+    window.scrollTo({ top: 0});
+    if(Utils.getCookie('cookie-medium') === "ok" && localStorage.getItem('mediumData') !== null ){
       this.setState(
         {
           medium:JSON.parse(localStorage.getItem('mediumData')),
@@ -29,7 +33,7 @@ class Medium extends Component{
     }else{
         // const now = new Date();
         const url = "https://medium.com/feed/@heruhartanto";
-        axios.get(`https://api.rss2json.com/v1/api.json?rss_url=${url}`).then((response)=> {
+        axios.get(`https://api.rss2json.com/v1/api.json?rss_url=${url}`).then((response) => {
           Utils.generateCookies('cookie-medium');
           this.setState(
             {

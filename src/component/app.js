@@ -12,11 +12,10 @@ class App extends Component {
     this.state = {};
   }
 
-  // componentDidMount(){
-  // 	axios.get('http://goheru.com/public/portfolioJson').then((response)=> {
-  //    			setTimeout(function() { this.setState({loading:false})}.bind(this), 3000);
-  // 		 })
-  // }
+  componentDidMount(){
+    document.body.style.backgroundColor = "#fff";
+    window.scrollTo({ top: 0});
+  }
 
   render() {
     return (

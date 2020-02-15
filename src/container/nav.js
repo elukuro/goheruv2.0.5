@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Nav = props => {
-  const { active } = props;
+  const { active, isDarkMode, darkMode, detail } = props;
   return (
     <div className="nav">
       <ul>
@@ -23,6 +23,13 @@ const Nav = props => {
             Books
           </Link>
         </li>
+        { (active ==="medium" && detail === "true") ? (
+          <li>
+            <button className={(isDarkMode === true) ? "lightMode" : "darkMode"} type="button" onClick={darkMode}>
+              { (isDarkMode === true) ? "☀️ Mode" : "🌕 Mode"}
+            </button>
+          </li>
+        ) :''}
         {/* <li><Link to="/work" className={(active==='work') ? 'link active' : 'link'}>Done</Link></li> */}
         {/* <li><Link to="/workout" className={(active==='workout') ? 'link active' : 'link'}>Workout</Link></li> */}
       </ul>

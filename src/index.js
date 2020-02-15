@@ -16,7 +16,6 @@ import Book from "./component/book";
 // import Workout from "./component/workout";
 
 const createStoreWithMiddleware = applyMiddleware(Promise)(createStore);
-
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <HashRouter>
