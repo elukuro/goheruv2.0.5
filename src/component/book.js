@@ -9,7 +9,10 @@ class Books extends Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    document.body.style.backgroundColor = "#fff";
+    window.scrollTo({ top: 0});
+  }
 
   render() {
     return (

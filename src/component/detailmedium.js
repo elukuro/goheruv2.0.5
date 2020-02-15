@@ -10,27 +10,47 @@ class DetailMedium extends Component {
     super(props);
     this.state = {
       content: {},
-      loading: true
+      loading: true,
+      darkMode: false,
     };
+    this.changeDarkMode = this.changeDarkMode.bind(this);
   }
 
   componentDidMount() {
     const {match} = this.props;
     const {id} = match.params;
-    const URL ="https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto";
-    axios.get(URL).then(response => {
-      this.setState({ content: response.data.items[id], loading: false });
-    });
+    const contentData = JSON.parse(localStorage.getItem('mediumData'));
+    if(contentData == null){
+      const url = "https://medium.com/feed/@heruhartanto";
+      axios.get(`https://api.rss2json.com/v1/api.json?rss_url=${url}`).then((response) => {
+        this.setState({ content: response.data.items[id], loading: false });
+      })
+    }else{
+      this.setState({ content: contentData[id], loading: false });
+    }
+    window.scrollTo({ top: 0});
   }
 
+  changeDarkMode(){
+    const {darkMode} = this.state;
+    // eslint-disable-next-line react/no-access-state-in-setstate
+    this.setState({darkMode:!darkMode});
+    if(darkMode === false ){
+      document.body.style.backgroundColor = "#333";
+    }else{
+      document.body.style.backgroundColor = "#fff";
+    }
+  }
+
+
   renderDetail() {
-    const { content, loading } = this.state;
+    const { content, loading,darkMode } = this.state;
     const item = content;
     if (loading) {
       return <Loading />;
     }
     return (
-      <div className="detail detail-medium" key={item.title}>
+      <div className={(darkMode === true) ? "detail detail-medium--dark" : "detail detail-medium"} key={item.title}>
         <p className="date">
           {Moment(item.pubDate).format("DD MMM YYYY")}
           #
@@ -49,9 +69,10 @@ class DetailMedium extends Component {
   }
 
   render() {
+    const {darkMode } = this.state;
     return (
       <div>
-        <Nav active="medium" />
+        <Nav active="medium" detail="true" isDarkMode={darkMode} darkMode={this.changeDarkMode} />
         {this.renderDetail()}
       </div>
     );

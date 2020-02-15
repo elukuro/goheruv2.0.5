@@ -5,12 +5,14 @@ import { connect } from "react-redux";
 import Moment from "moment";
 import _ from "lodash";
 import Loading from "./loading";
+import Utils from "../_Utils";
+
 
 class BlogLite extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      blog: {},
+      // blog: {},
       loading: true,
       heading: "Article that maybe worth to read (or not)",
       quote: "sometimes I write to express something inside me",
@@ -20,26 +22,35 @@ class BlogLite extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://goheru.com/public/postJson/all").then(response => {
-      this.setState({ blog: response.data, loading: false });
-    });
+    // axios.get("http://goheru.com/public/postJson/all").then(response => {
+    //   this.setState({ blog: response.data, loading: false });
+    // });
 
     axios.get("http://goheru.com/public/landingpageJson").then(response => {
       this.setState({ text: response.data });
     });
 
-    axios
-      .get("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@heruhartanto")
-      .then(response => {
-        localStorage.setItem("mediumData", JSON.stringify(response.data.items));
-        this.setState({
-          medium: JSON.parse(localStorage.getItem("mediumData"))
-        });
-      });
-    // const now = new Date();
-    // if (now.getHours() > 4) {
-    //   localStorage.removeItem("mediumData");
-    //   // //alert("di dalam lebih dari jam 5")
+    if(Utils.getCookie('cookie-medium') === "ok" && localStorage.getItem('mediumData') !== null ){
+      this.setState(
+        {
+          medium:JSON.parse(localStorage.getItem('mediumData')),
+          loading:false
+        }
+      );
+    }else{
+        // const now = new Date();
+        const url = "https://medium.com/feed/@heruhartanto";
+        axios.get(`https://api.rss2json.com/v1/api.json?rss_url=${url}`).then((response) => {
+          Utils.generateCookies('cookie-medium');
+          this.setState(
+            {
+              medium:response.data.items,
+              loading:false
+            }
+          );
+          localStorage.setItem('mediumData',JSON.stringify(response.data.items));
+        })
+    }
   }
 
   renderText() {
@@ -53,33 +64,33 @@ class BlogLite extends Component {
     });
   }
 
-  // eslint-disable-next-line consistent-return
-  renderBlog() {
-    const { medium, blog } = this.state;
+  // // eslint-disable-next-line consistent-return
+  // renderBlog() {
+  //   const { medium, blog } = this.state;
 
-    if (medium.length > 0) {
-      return _.map(blog.slice(0, 2), item => {
-        return (
-          <li key={item.id}>
-            <p className="text">
-              {item.created_at}
-              #
-              {item.category}
-            </p>
-            <h4 className="heading">
-              <Link to={`/notes/${item.id}`}>{item.title}</Link>
-            </h4>
-          </li>
-        );
-      });
-    }
-  }
+  //   if (medium.length > 0) {
+  //     return _.map(blog.slice(0, 2), item => {
+  //       return (
+  //         <li key={item.id}>
+  //           <p className="text">
+  //             {item.created_at}
+  //             #
+  //             {item.category}
+  //           </p>
+  //           <h4 className="heading">
+  //             <Link to={`/notes/${item.id}`}>{item.title}</Link>
+  //           </h4>
+  //         </li>
+  //       );
+  //     });
+  //   }
+  // }
 
   // eslint-disable-next-line consistent-return
   renderMedium() {
     const { medium } = this.state;
     if (medium.length > 0) {
-      return _.map(medium.slice(0, 3), (item, key) => {
+      return _.map((medium.slice(0,3)), (item, key) => {
         return (
           <li key={key}>
             <p className="text">
@@ -110,9 +121,6 @@ class BlogLite extends Component {
           <p className="text">{quote}</p>
           <div className="blog-list">
             <ul>{this.renderMedium()}</ul>
-          </div>
-          <div className="blog-list">
-            <ul>{this.renderBlog()}</ul>
           </div>
         </div>
         <div className="center">

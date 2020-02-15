@@ -5,6 +5,8 @@ import Blog from '../container/blog';
 
 class Notes extends Component{
 	componentDidMount(){
+    document.body.style.backgroundColor = "#fff";
+    window.scrollTo({ top: 0});
 	}
 
 render(){
