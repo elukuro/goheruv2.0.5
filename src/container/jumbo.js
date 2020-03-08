@@ -14,7 +14,7 @@ class Jumbo extends Component {
       loading: true,
       mediumHeading: "Article that maybe worth to read (or not)",
       workHeading: "Place to preview my work and archivement, my personal project, others",
-      bookHeading: "Read fourty file minute a day and feel the diference",
+      bookHeading: "Read fourty five minute a day and feel the diference",
       workoutHeading: "Run Ruun Ruuuuun!",
       // eslint-disable-next-line max-len
       homepageHeading: "I'am ISTJ-A that work as web developer, feed my brain with book and strength my mind with running",
@@ -81,7 +81,7 @@ class Jumbo extends Component {
     }
     return (
       <div className="jumbo">
-        <img src={jumboImage} alt="jumbo" className={ (page === "medium" || page ==="book") ? "image smaller" : "image"} />
+        <img src={jumboImage} alt="jumbo" className={(page === "medium" || page ==="book") ? "image smaller" : "image"} />
         <div className="headline">{headline}</div>
         <ul className={page === "default" ? "social-media" : "social-media hide"}>
           <li>
