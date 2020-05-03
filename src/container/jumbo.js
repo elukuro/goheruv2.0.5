@@ -1,8 +1,8 @@
 /* eslint-disable global-require */
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { connect } from "react-redux";
-import _ from "lodash";
+// import _ from "lodash";
 import PropTypes from 'prop-types';
 import Loading from "./loading";
 
@@ -10,7 +10,7 @@ class Jumbo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      landingpage: {},
+      // landingpage: {},
       loading: true,
       mediumHeading: "Article that maybe worth to read (or not)",
       workHeading: "Place to preview my work and archivement, my personal project, others",
@@ -22,15 +22,16 @@ class Jumbo extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://goheru.com/public/landingpageJson").then(response => {
-      this.setState({ landingpage: response.data, loading: false });
-    });
+    // axios.get("http://goheru.com/public/landingpageJson").then(response => {
+    //   this.setState({ landingpage: response.data, loading: false });
+    // });
+    this.setState({loading: false})
   }
 
   renderPost() {
     const { page } = this.props;
     const {
-      landingpage,
+      // landingpage,
       workHeading,
       mediumHeading,
       bookHeading,
@@ -48,15 +49,15 @@ class Jumbo extends Component {
       // });
       text = `${homepageHeading}`
     }
-    if (page === "notes") {
-      return _.map(landingpage, item => {
-        return (
-          <p key={item.id} className="headline">
-            {item.content_admin}
-          </p>
-        );
-      });
-    }
+    // if (page === "notes") {
+    //   return _.map(landingpage, item => {
+    //     return (
+    //       <p key={item.id} className="headline">
+    //         {item.content_admin}
+    //       </p>
+    //     );
+    //   });
+    // }
     if (page === "work") {
       text = `${workHeading}`;
     }

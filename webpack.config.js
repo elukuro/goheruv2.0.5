@@ -60,7 +60,7 @@ module.exports = {
       useHashIndex: false
     }),
     new HtmlWebpackPlugin({
-      title: "web developer | Half marathon runner | bookworm | simple-minded | overthinker",
+      title: "web developer | marathon runner | bookworm | simple-minded | overthinker",
       hash: true,
       template: "./src/template/index.html",
       minify: {

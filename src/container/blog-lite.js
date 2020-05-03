@@ -16,7 +16,7 @@ class BlogLite extends Component {
       loading: true,
       heading: "Article that maybe worth to read (or not)",
       quote: "sometimes I write to express something inside me",
-      text: {},
+      // text: {},
       medium: {}
     };
   }
@@ -26,9 +26,9 @@ class BlogLite extends Component {
     //   this.setState({ blog: response.data, loading: false });
     // });
 
-    axios.get("http://goheru.com/public/landingpageJson").then(response => {
-      this.setState({ text: response.data });
-    });
+    // axios.get("http://goheru.com/public/landingpageJson").then(response => {
+    //   this.setState({ text: response.data });
+    // });
 
     if(Utils.getCookie('cookie-medium') === "ok" && localStorage.getItem('mediumData') !== null ){
       this.setState(
@@ -53,16 +53,16 @@ class BlogLite extends Component {
     }
   }
 
-  renderText() {
-    const { text } = this.state;
-    return _.map(text, item => {
-      return (
-        <p className="text" key={item.id}>
-          {item.content_admin}
-        </p>
-      );
-    });
-  }
+  // renderText() {
+  //   const { text } = this.state;
+  //   return _.map(text, item => {
+  //     return (
+  //       <p className="text" key={item.id}>
+  //         {item.content_admin}
+  //       </p>
+  //     );
+  //   });
+  // }
 
   // // eslint-disable-next-line consistent-return
   // renderBlog() {
