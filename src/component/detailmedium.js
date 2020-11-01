@@ -21,7 +21,7 @@ class DetailMedium extends Component {
     const {id} = match.params;
     const contentData = JSON.parse(localStorage.getItem('mediumData'));
     if(contentData == null){
-      const url = "https://medium.com/feed/@heruhartanto";
+      const url = "https://medium.com/feed/@goheru";
       axios.get(`https://api.rss2json.com/v1/api.json?rss_url=${url}`).then((response) => {
         this.setState({ content: response.data.items[id], loading: false });
       })

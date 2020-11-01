@@ -32,7 +32,7 @@ class Medium extends Component{
       );
     }else{
         // const now = new Date();
-        const url = "https://medium.com/feed/@heruhartanto";
+        const url = "https://medium.com/feed/@goheru";
         axios.get(`https://api.rss2json.com/v1/api.json?rss_url=${url}`).then((response) => {
           Utils.generateCookies('cookie-medium');
           this.setState(
