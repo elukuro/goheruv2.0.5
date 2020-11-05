@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prod": "npm run clean && NODE_ENV=production webpack -p",
+    "prod": "npm run clean &&  webpack -p",
     "clean": "rimraf ./dist/*",
     "start": "webpack-dev-server",
     "pretest": "eslint --ignore-path .gitignore ."
@@ -60,10 +60,5 @@
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3",
     "xml-js": "^1.6.11"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run pretest"
-    }
   }
 }

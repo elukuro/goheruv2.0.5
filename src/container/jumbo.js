@@ -97,7 +97,7 @@ class Jumbo extends Component {
             </a>
           </li>
           <li>
-            <a href="https://medium.com/@heruhartanto" target="_blank" rel="noopener noreferrer">
+            <a href="https://goheru.medium.com" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-medium fa-2x" />
               Medium
             </a>
