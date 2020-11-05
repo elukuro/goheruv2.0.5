@@ -10,17 +10,20 @@ class WorkList extends Component {
     this.state = {
       workout: {},
       allworkout: {},
-      loading: true
+      loading: true,
+      // athlete:{},
     };
   }
 
   componentDidMount() {
     const config = { headers: { "X-Requested-With": "XMLHttpRequest" } };
-    axios.get("http://goheru.com/workout.json", config).then(response => {
+    const URL = "https://murmuring-sierra-98335.herokuapp.com/activity-list";
+    axios.get(URL, config).then(response => {
       this.setState({
-        workout: response.data.recent_run_totals,
-        allworkout: response.data.all_run_totals,
-        loading: false
+        workout: response.data.workout.recent_run_totals,
+        allworkout: response.data.workout.ytd_run_totals,
+        loading: false,
+        // athlete:response.data.athlete,
       });
     });
   }
@@ -51,7 +54,7 @@ class WorkList extends Component {
     );
   }
 
-  renderAllTimeWorkoutList() {
+  renderYTDWorkoutList() {
     const { allworkout } = this.state;
     return (
       <div className="workout-all-list-elem">
@@ -88,10 +91,10 @@ class WorkList extends Component {
       <div className="project workout">
         <div className="project-wrap">
           <div className="workout-list">
-            <h3>Recent Activity</h3>
+            <h3>Recent activity</h3>
             {this.renderWorkoutList()}
-            <h3>All Activity</h3>
-            {this.renderAllTimeWorkoutList()}
+            <h3>Year to date activity</h3>
+            {this.renderYTDWorkoutList()}
           </div>
         </div>
       </div>

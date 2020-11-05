@@ -50,7 +50,12 @@ class DetailMedium extends Component {
       return <Loading />;
     }
     return (
-      <div className={(darkMode === true) ? "detail detail-medium--dark" : "detail detail-medium"} key={item.title}>
+      <div
+        className={(darkMode === true)
+          ? "detail detail-medium--dark"
+          : "detail detail-medium"}
+        key={item.title}
+      >
         <p className="date">
           {Moment(item.pubDate).format("DD MMM YYYY")}
           #

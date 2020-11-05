@@ -23,6 +23,8 @@ const Nav = props => {
             Books
           </Link>
         </li>
+        {/* <li><Link to="/work" className={(active==='work') ? 'link active' : 'link'}>Done</Link></li> */}
+        <li><Link to="/workout" className={(active === "workout") ? "link active" : "link"}>Run</Link></li>
         { (active ==="medium" && detail === "true") ? (
           <li>
             <button className={(isDarkMode === true) ? "lightMode" : "darkMode"} type="button" onClick={darkMode}>
@@ -30,8 +32,6 @@ const Nav = props => {
             </button>
           </li>
         ) :''}
-        {/* <li><Link to="/work" className={(active==='work') ? 'link active' : 'link'}>Done</Link></li> */}
-        {/* <li><Link to="/workout" className={(active==='workout') ? 'link active' : 'link'}>Workout</Link></li> */}
       </ul>
     </div>
   );

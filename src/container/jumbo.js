@@ -82,7 +82,12 @@ class Jumbo extends Component {
     }
     return (
       <div className="jumbo">
-        <img src={jumboImage} alt="jumbo" className={(page === "medium" || page ==="book") ? "image smaller" : "image"} />
+        <img
+          src={jumboImage}
+          alt="jumbo"
+          className={(page === "medium" || page ==="book")
+          ? "image smaller" : "image"}
+        />
         <div className="headline">{headline}</div>
         <ul className={page === "default" ? "social-media" : "social-media hide"}>
           <li>
