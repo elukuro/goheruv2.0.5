@@ -60,5 +60,10 @@
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3",
     "xml-js": "^1.6.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pretest"
+    }
   }
 }
