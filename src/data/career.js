@@ -19,10 +19,18 @@ const data = [
   {
     id: 3,
     title: "Blanja",
-    years: "2018-now",
+    years: "2018-2020",
     jobdesk: "front end developer",
     description:
       "<p>work with e-commerce industry a lot of hate-love relationship with code here.</p>\r\n"
+  },
+  {
+    id: 4,
+    title: "Gtech digital",
+    years: "2020-now",
+    jobdesk: "(still) front end developer",
+    description:
+      "<p>work with e-commerce industry (again) but I assume more fancy.</p>\r\n"
   }
 ];
 
