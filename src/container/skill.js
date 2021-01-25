@@ -3,46 +3,51 @@
 /* eslint-disable global-require */
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+// import axios from 'axios';
 import _ from 'lodash';
-import axios from 'axios';
+import skill from '../data/skill';
 
 class Skill extends Component{
 
 	constructor(props){
 		super(props);
 		this.state={
-			description:{},
+			description:{
+        // eslint-disable-next-line max-len
+        description: "<p>when I was 17, I write my first code using pascal to solve algorithm question, many years later I still struggle to improve my skill set by following some online course and tackle online code challenge, and obviously it is up and down and long lifetime learning</p>"
+      },
 			skill:{},
 			heading:"here what I'm good with"
 		}
 	}
 
 	componentDidMount(){
-		axios.get('http://goheru.com/public/aboutJson').then((response)=>{
-			this.setState({description:response.data})
-		})
+		// axios.get('http://goheru.com/public/aboutJson').then((response)=>{
+		// 	this.setState({description:response.data})
+		// })
 
-		axios.get('http://goheru.com/public/skillJson').then((response)=>{
-			this.setState({skill:response.data})
-		})
+		// axios.get('http://goheru.com/public/skillJson').then((response)=>{
+			this.setState({skill})
+		// })
 	}
 
 	renderDescription(){
   const {description} = this.state;
-  return _.map(description,item=>{
-    const cleanText = item.description.replace(/<\/?[^>]+(>|$)/g, "");
+  // return _.map(description,item=>{
+    const cleanText = description.description.replace(/<\/?[^>]+(>|$)/g, "");
     return(
-      <p className="text" key={item.id}>
+      <p className="text">
         {cleanText}
       </p>
     )
-  })
+  // })
 	}
 
 	renderSkillItem(id){
-    const {skill} = this.state;
+    // eslint-disable-next-line react/destructuring-assignment
+    const skillState = this.state.skill;
 		// eslint-disable-next-line consistent-return
-		return _.map(skill,item=>{
+		return _.map(skillState, item=>{
       if(item.category===id){
         return(
           <li key={item.id}>

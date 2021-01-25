@@ -13,7 +13,7 @@ import DetailMedium from "./component/detailmedium";
 import Work from "./component/work";
 import Medium from "./component/medium";
 import Book from "./component/book";
-// import Workout from "./component/workout";
+import Workout from "./component/workout";
 
 const createStoreWithMiddleware = applyMiddleware(Promise)(createStore);
 ReactDOM.render(
@@ -27,7 +27,7 @@ ReactDOM.render(
           <Route exact path="/medium" component={Medium} />
           <Route exact path="/work" component={Work} />
           <Route exact path="/book" component={Book} />
-          {/* <Route exact path="/workout" component={Workout} /> */}
+          <Route exact path="/workout" component={Workout} />
           <Route exact path="/" component={App} />
         </Switch>
       </main>

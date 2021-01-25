@@ -1,8 +1,8 @@
 /* eslint-disable global-require */
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { connect } from "react-redux";
-import _ from "lodash";
+// import _ from "lodash";
 import PropTypes from 'prop-types';
 import Loading from "./loading";
 
@@ -10,11 +10,11 @@ class Jumbo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      landingpage: {},
+      // landingpage: {},
       loading: true,
       mediumHeading: "Article that maybe worth to read (or not)",
       workHeading: "Place to preview my work and archivement, my personal project, others",
-      bookHeading: "Read fourty file minute a day and feel the diference",
+      bookHeading: "Read fourty five minute a day and feel the diference",
       workoutHeading: "Run Ruun Ruuuuun!",
       // eslint-disable-next-line max-len
       homepageHeading: "I'am ISTJ-A that work as web developer, feed my brain with book and strength my mind with running",
@@ -22,15 +22,16 @@ class Jumbo extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://goheru.com/public/landingpageJson").then(response => {
-      this.setState({ landingpage: response.data, loading: false });
-    });
+    // axios.get("http://goheru.com/public/landingpageJson").then(response => {
+    //   this.setState({ landingpage: response.data, loading: false });
+    // });
+    this.setState({loading: false})
   }
 
   renderPost() {
     const { page } = this.props;
     const {
-      landingpage,
+      // landingpage,
       workHeading,
       mediumHeading,
       bookHeading,
@@ -48,15 +49,15 @@ class Jumbo extends Component {
       // });
       text = `${homepageHeading}`
     }
-    if (page === "notes") {
-      return _.map(landingpage, item => {
-        return (
-          <p key={item.id} className="headline">
-            {item.content_admin}
-          </p>
-        );
-      });
-    }
+    // if (page === "notes") {
+    //   return _.map(landingpage, item => {
+    //     return (
+    //       <p key={item.id} className="headline">
+    //         {item.content_admin}
+    //       </p>
+    //     );
+    //   });
+    // }
     if (page === "work") {
       text = `${workHeading}`;
     }
@@ -81,7 +82,12 @@ class Jumbo extends Component {
     }
     return (
       <div className="jumbo">
-        <img src={jumboImage} alt="jumbo" className={ (page === "medium" || page ==="book") ? "image smaller" : "image"} />
+        <img
+          src={jumboImage}
+          alt="jumbo"
+          className={(page === "medium" || page ==="book")
+          ? "image smaller" : "image"}
+        />
         <div className="headline">{headline}</div>
         <ul className={page === "default" ? "social-media" : "social-media hide"}>
           <li>
@@ -91,7 +97,7 @@ class Jumbo extends Component {
             </a>
           </li>
           <li>
-            <a href="https://medium.com/@heruhartanto" target="_blank" rel="noopener noreferrer">
+            <a href="https://goheru.medium.com" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-medium fa-2x" />
               Medium
             </a>
