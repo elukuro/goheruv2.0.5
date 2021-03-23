@@ -55,7 +55,7 @@ class Books extends Component {
             <div className="book-list-item">
               <p className="text">
                 Avg.Rating: (
-                { item.book[0].ratings_count[0]}
+                { item.book[0].average_rating[0]}
                 )
               </p>
               <h4 title={item.book[0].title_without_series[0]} className="heading">
