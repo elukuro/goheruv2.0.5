@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import _ from "lodash";
-import convert from "xml-js";
+// import convert from "xml-js";
 import Loading from "./loading";
 import Utils from "../_Utils";
 
@@ -19,9 +19,10 @@ class Books extends Component {
   componentDidMount() {
     // const now = new Date();
     const config = { headers: { "X-Requested-With": "XMLHttpRequest" } };
-    const CROS_ANYWHERE = "https://cors-anywhere.herokuapp.com";
-    const GOODREAD = "https://www.goodreads.com/review/list/78987652.xml";
-    const KEY = "dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto";
+    // const CROS_ANYWHERE = "https://cors-anywhere.herokuapp.com";
+    // const GOODREAD = "https://www.goodreads.com/review/list/78987652.xml";
+    // const KEY = "dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto";
+    const URL = 'https://fierce-headland-02005.herokuapp.com/my-book'
 
     if(Utils.getCookie('cookie') === "ok"){
         this.setState({
@@ -29,18 +30,16 @@ class Books extends Component {
           books:JSON.parse(localStorage.getItem('bookData'))
         })
     }else{
-      axios.get(`${CROS_ANYWHERE}/${GOODREAD}?key=${KEY}&shelf=read&per_page=200`,config)
+      axios.get(URL,config)
         .then(response => {
-          const result = convert.xml2json(response.data, { compact: true, spaces: 4 });
-          const jsonResult = JSON.parse(result);
           this.setState({
             loading: false,
-            books: jsonResult.GoodreadsResponse.reviews.review
+            books: response.data
           });
           Utils.generateCookies('cookie');
           localStorage.setItem(
             "bookData",
-            JSON.stringify(jsonResult.GoodreadsResponse.reviews.review)
+            JSON.stringify(response.data)
           );
         });
       }
@@ -51,20 +50,20 @@ class Books extends Component {
     return _.map(books, (item, key) => {
       return (
         <li key={key} className="book-list-card">
-          <a href={item.url._cdata}>
-            <img src={item.book.image_url._text} alt={item.book.image_url._text} />
+          <a href={item.link[0]}>
+            <img src={item.book[0].image_url[0]} alt={item.book[0].title_without_series[0]} />
             <div className="book-list-item">
               <p className="text">
                 Avg.Rating: (
-                { item.book.average_rating._text}
+                { item.book[0].ratings_count[0]}
                 )
               </p>
-              <h4 title={item.book.title._text} className="heading">
-                {item.book.title._text}
+              <h4 title={item.book[0].title_without_series[0]} className="heading">
+                {item.book[0].title_without_series[0]}
               </h4>
               <span className="author">
                 Author :
-                {item.book.authors.author.name._text}
+                {item.book[0].authors[0].author[0].name[0]}
               </span>
             </div>
           </a>
