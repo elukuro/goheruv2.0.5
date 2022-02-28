@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // import axios from "axios";
 import { connect } from "react-redux";
 // import _ from "lodash";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Loading from "./loading";
 
 class Jumbo extends Component {
@@ -17,7 +17,8 @@ class Jumbo extends Component {
       bookHeading: "Read fourty five minute a day and feel the diference",
       workoutHeading: "Run Ruun Ruuuuun!",
       // eslint-disable-next-line max-len
-      homepageHeading: "I'am ISTJ-A that work as web developer, feed my brain with book and strength my mind with running",
+      homepageHeading:
+        "I'am ISTJ-A that work as web developer, feed my brain with book and strength my mind with running"
     };
   }
 
@@ -25,7 +26,7 @@ class Jumbo extends Component {
     // axios.get("http://goheru.com/public/landingpageJson").then(response => {
     //   this.setState({ landingpage: response.data, loading: false });
     // });
-    this.setState({loading: false})
+    this.setState({ loading: false });
   }
 
   renderPost() {
@@ -47,7 +48,7 @@ class Jumbo extends Component {
       //     </p>
       //   );
       // });
-      text = `${homepageHeading}`
+      text = `${homepageHeading}`;
     }
     // if (page === "notes") {
     //   return _.map(landingpage, item => {
@@ -85,13 +86,12 @@ class Jumbo extends Component {
         <img
           src={jumboImage}
           alt="jumbo"
-          className={(page === "medium" || page ==="book")
-          ? "image smaller" : "image"}
+          className={page === "medium" || page === "book" ? "image smaller" : "image"}
         />
         <div className="headline">{headline}</div>
         <ul className={page === "default" ? "social-media" : "social-media hide"}>
           <li>
-            <a href="https://twitter.com/heru_hartanto" target="_blank" rel="noopener noreferrer">
+            <a href="https://twitter.com/goheru_" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-twitter fa-2x" />
               Twitter
             </a>
@@ -135,7 +135,7 @@ class Jumbo extends Component {
 // }
 
 Jumbo.propTypes = {
-  page:PropTypes.string.isRequired
-}
+  page: PropTypes.string.isRequired
+};
 
 export default connect(null, {})(Jumbo);

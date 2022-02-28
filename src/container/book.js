@@ -22,49 +22,39 @@ class Books extends Component {
     // const CROS_ANYWHERE = "https://cors-anywhere.herokuapp.com";
     // const GOODREAD = "https://www.goodreads.com/review/list/78987652.xml";
     // const KEY = "dQEr3Ou4hBICilnbCk4Q&v=2&id=78987652-heru-hartanto";
-    const URL = 'https://fierce-headland-02005.herokuapp.com/my-book'
+    const URL = "https://fierce-headland-02005.herokuapp.com/my-book";
 
-    if(Utils.getCookie('cookie') === "ok"){
+    if (Utils.getCookie("cookie") === "ok") {
+      this.setState({
+        loading: false,
+        books: JSON.parse(localStorage.getItem("bookData"))
+      });
+    } else {
+      axios.get(URL, config).then(response => {
         this.setState({
-          loading:false,
-          books:JSON.parse(localStorage.getItem('bookData'))
-        })
-    }else{
-      axios.get(URL,config)
-        .then(response => {
-          this.setState({
-            loading: false,
-            books: response.data
-          });
-          Utils.generateCookies('cookie');
-          localStorage.setItem(
-            "bookData",
-            JSON.stringify(response.data)
-          );
+          loading: false,
+          books: response.data
         });
-      }
-    };
+        Utils.generateCookies("cookie");
+        localStorage.setItem("bookData", JSON.stringify(response.data));
+      });
+    }
+  }
 
   renderBooks() {
     const { books } = this.state;
     return _.map(books, (item, key) => {
+      // const year = item.date_updated[0].substr(item.date_updated[0].length - 4);
       return (
         <li key={key} className="book-list-card">
           <a href={item.link[0]}>
             <img src={item.book[0].image_url[0]} alt={item.book[0].title_without_series[0]} />
             <div className="book-list-item">
-              <p className="text">
-                Avg.Rating: (
-                { item.book[0].average_rating[0]}
-                )
-              </p>
+              <p className="text">Avg.Rating: ({item.book[0].average_rating[0]})</p>
               <h4 title={item.book[0].title_without_series[0]} className="heading">
                 {item.book[0].title_without_series[0]}
               </h4>
-              <span className="author">
-                Author :
-                {item.book[0].authors[0].author[0].name[0]}
-              </span>
+              <span className="author">Author :{item.book[0].authors[0].author[0].name[0]}</span>
             </div>
           </a>
         </li>
