@@ -1,0 +1,12 @@
+@import "fonts";
+@import "color";
+
+body{
+  font-family: $roboto;
+  color:$dark-gray;
+  h1{
+    font-size: $body;
+    font-weight: $normal;
+    color:$gray;
+  }
+}
