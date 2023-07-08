@@ -1,11 +1,13 @@
-import { useState } from 'react'
-function App() {
-
-  return (
+import { Outlet } from "react-router-dom";
+import DefaultLayout from "./layout/default";
+const App = () => {
+  return(
     <>
-      <h1>Something awesome is coming</h1>
+      <DefaultLayout>
+        <Outlet />
+      </DefaultLayout>
     </>
   )
 }
 
-export default App
+export default App;
