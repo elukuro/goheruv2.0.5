@@ -1,12 +1,8 @@
 @import "fonts";
 @import "color";
+@import "common";
+@import "normalize";
 
 body{
   font-family: $roboto;
-  color:$dark-gray;
-  h1{
-    font-size: $body;
-    font-weight: $normal;
-    color:$gray;
-  }
 }
