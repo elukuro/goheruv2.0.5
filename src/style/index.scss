@@ -6,3 +6,49 @@
 body{
   font-family: $roboto;
 }
+.content{
+  min-height: 320px;
+}
+
+.header{
+  max-width: $max-width;
+  margin:0 auto;
+  &__nav{
+  display: flex;
+  justify-content:flex-end;
+  gap:16px;
+  align-items: center;
+  li{
+    list-style-type: none;
+    a{
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: $lato;
+      font-weight: $bold;
+      color:$dark-gray;
+      &:hover{
+        border-bottom: 3px solid $yellow;
+      }
+    }
+  }
+ }
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  margin:0 auto;
+  background-color: $light-gray;
+  &__text{
+    font-size: $content-2;
+    color:$dark-gray;
+    font-weight: $light;
+  }
+  &__image{
+    width:10px;
+    transform: rotate(90deg);
+  }
+}
