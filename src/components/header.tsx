@@ -1,42 +1,55 @@
+import { useContext, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { NavContext } from "../context/navContext";
 const Header = () => {
   const header = [
     {
       name: "home",
-      link: "#home"
+      link: "#home",
     },
     {
       name: "notes",
-      link: "#notes"
+      link: "#notes",
     },
     {
       name: "devtips",
-      link: "#devtips"
+      link: "#devtips",
     },
     // {
     //   name: "book",
     //   link: "#book"
     // }
-  ]
+  ];
+  const { activeNav, setActiveNav } = useContext(NavContext);
+  const location = useLocation();
 
-  const RenderList = () =>{
-    return(
-      header.map((item, index) => {
-        return(
-          <li key={index}><a href={item.link}>{item.name}</a></li>
-        )
-      })
-    )
-  }
+  useEffect(() => {
+    setActiveNav(location.hash);
+  }, [location]);
 
-  return(
+  const RenderList = () => {
+    return header.map((item, index) => {
+      return (
+        <li key={index}>
+          <Link to={item.link} className={`${activeNav === item.link ? "active" : ""}`}>
+            {item.name}
+          </Link>
+        </li>
+      );
+    });
+  };
+
+  // const { activeNav, setActiveNav } = useContext(ThemeContext);
+
+  return (
     <>
       <div className="header">
-      <ul className="header__nav">
-        <RenderList/>
-      </ul>
+        <ul className="header__nav">
+          <RenderList />
+        </ul>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Header;

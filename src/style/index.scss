@@ -31,6 +31,9 @@ body{
       &:hover{
         border-bottom: 3px solid $yellow;
       }
+      &.active{
+        border-bottom: 3px solid $yellow;
+      }
     }
   }
  }
