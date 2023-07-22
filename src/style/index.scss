@@ -6,8 +6,10 @@
 body{
   font-family: $roboto;
 }
-.content{
+.container{
   min-height: 320px;
+  max-width: $max-width;
+  margin:0 auto;
 }
 
 .header{
@@ -50,5 +52,14 @@ body{
   &__image{
     width:10px;
     transform: rotate(90deg);
+  }
+}
+
+a{
+  color:$dark-gray;
+  font-weight:$bold;
+  text-decoration: none;
+  &:hover{
+    border-bottom: 3px solid $yellow;
   }
 }

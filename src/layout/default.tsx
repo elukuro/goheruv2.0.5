@@ -5,7 +5,7 @@ const DefaultLayout = (props: { children: any; }) => {
   return(
     <>
       <Header/>
-        <div className="content">
+        <div className="container">
           {props.children}
         </div>
       <Footer/>
