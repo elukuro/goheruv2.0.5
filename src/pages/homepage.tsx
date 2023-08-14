@@ -6,13 +6,13 @@ const Homepage = () => {
       <div className="homepage">
         <h1>Hello,</h1>
         <p>
-          I'am Heru <b>Frontend Developer based in Jakarta</b>, I have years experience mostly in
-          e-commerce industry. Sometimes I write about web development and devtips in <b>#DevTo</b>
+          I'am Heru, <b>Frontend Developer based in Jakarta</b>, I have years experience mostly in
+          e-commerce industry. Sometimes I write about web development and devtips in <b>#DevTo </b>
           Community
         </p>
         <p>
-          Beside coding I also run as "cheap therapy" for my zombie life every weekday, I also love
-          to read books mostly non fiction.
+          Beside coding I also run as my <b>"cheap therapy"</b> for my zombie life every weekday, I
+          also love to read books mostly non fiction.
         </p>
         <p>You can find me on social media </p>
         <ul className="homepage__social-media">

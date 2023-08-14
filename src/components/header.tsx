@@ -5,15 +5,15 @@ const Header = () => {
   const header = [
     {
       name: "home",
-      link: "#home",
+      link: "/",
     },
-    {
-      name: "notes",
-      link: "#notes",
-    },
+    // {
+    //   name: "notes",
+    //   link: "notes",
+    // },
     {
       name: "devtips",
-      link: "#devtips",
+      link: "/devtips",
     },
     // {
     //   name: "book",
@@ -24,7 +24,7 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    setActiveNav(location.hash);
+    setActiveNav(location.pathname);
   }, [location]);
 
   const RenderList = () => {
@@ -38,8 +38,6 @@ const Header = () => {
       );
     });
   };
-
-  // const { activeNav, setActiveNav } = useContext(ThemeContext);
 
   return (
     <>

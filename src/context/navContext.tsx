@@ -12,6 +12,6 @@ type NavContextProdivderType = {
 };
 
 export const NavContextProvider = ({ children }: NavContextProdivderType) => {
-  const [activeNav, setActiveNav] = useState("#home");
+  const [activeNav, setActiveNav] = useState("");
   return <NavContext.Provider value={{ activeNav, setActiveNav }}>{children}</NavContext.Provider>;
 };
