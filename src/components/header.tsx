@@ -24,7 +24,7 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    setActiveNav(location.pathname);
+    setActiveNav(location.pathname.includes("/devtips") ? "/devtips" : location.pathname);
   }, [location]);
 
   const RenderList = () => {

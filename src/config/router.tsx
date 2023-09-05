@@ -1,6 +1,7 @@
 import Homepage from "../pages/homepage.tsx";
 import ErrorPage from "../pages/error.tsx";
 import ArticlePage from "../pages/article.tsx";
+import DetailPage from "../pages/detail.tsx";
 
 import App from "./../app.tsx";
 
@@ -17,8 +18,16 @@ const router = createBrowserRouter([
         element: <Homepage />,
       },
       {
-        path: "devtips",
-        element: <ArticlePage />,
+        children: [
+          {
+            path: "/devtips/:title",
+            element: <DetailPage />,
+          },
+          {
+            path: "/devtips",
+            element: <ArticlePage />,
+          },
+        ],
       },
     ],
   },
