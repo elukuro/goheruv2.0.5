@@ -1,7 +1,6 @@
----
-title: "Understanding Javascript Closure"
-date: "8 January 2022"
----
+## Understanding Javascript Closure
+
+### 8 January 2022
 
 Closure gives you a access to an outer function scope from an inner function.
 

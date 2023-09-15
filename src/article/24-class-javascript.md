@@ -1,7 +1,6 @@
----
-title: "Classes Javascript"
-date: "29 November 2021"
----
+## Classes Javascript
+
+### 29 November 2021
 
 ES6 intoduced classes, it's often used by some front-end libraries such as react, in simple term classes are special kind of functions
 

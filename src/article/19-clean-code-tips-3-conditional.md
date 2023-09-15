@@ -1,14 +1,13 @@
----
-title: "Clean code tips #3: Conditionals"
-date: "16 September 2021"
----
+## Clean code tips #3: Conditionals
+
+### 16 September 2021
 
 ## Positive Conditionals over negative ones
 
 understanding negative conditionals is a bit more cumbersome as compared to understanding positive ones so it is prefered to employ those more
 
 ```
-// ❌ Don't 
+// ❌ Don't
 
 function isUserNotVerified(){
 
@@ -30,10 +29,10 @@ if(userVerified){
 
 ```
 
-
 ## Shorthands
 
 Shorthands make your code more compact and easier to read
+
 ```
 // ❌ Don't
 
@@ -60,9 +59,10 @@ if(!!firstname){
 const isUserValid = user.isVerified() && user.isActive()
 ```
 
-## Object literals over Switch statements 
+## Object literals over Switch statements
 
 Object literals make your switch conditions easier to understand
+
 ```
 // ❌ Don't
 
@@ -91,12 +91,11 @@ const statusColors = {
 const getStatus = (status) => statusColors[status] || statusColors.loading;
 ```
 
-
-## Optional chaining 
+## Optional chaining
 
 Optional chaining is a very useful paradigm to use to make your code simpler and more concise. Unfortunately it doesnt work with the IE browser as of now.
 
-It works as shown below : 
+It works as shown below :
 
 ```
 const alice = {

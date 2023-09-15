@@ -1,7 +1,6 @@
----
-title: "What is hoisting ? explain in less than 3 minutes"
-date: "12 November 2021"
----
+## What is hoisting ? explain in less than 3 minutes
+
+### 12 November 2021
 
 Short answer: Hoisting is javascript behaviour that move declaration to the top
 

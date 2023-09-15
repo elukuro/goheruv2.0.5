@@ -1,7 +1,6 @@
----
-title: "Bind, call, Apply in javascript"
-date: "20 February 2022"
----
+## Bind, call, Apply in javascript
+
+### 20 February 2022
 
 ES6 introduces the new metthos for objects, bind, call and apply, here a simple example to explain them.
 

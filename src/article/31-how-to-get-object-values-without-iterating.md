@@ -1,7 +1,6 @@
----
-title: "How to get all object values without iterating"
-date: "8 May 2022"
----
+## How to get all object values without iterating
+
+### 8 May 2022
 
 Es8 has introduced a new feature called `Object.values()` that can be used to get the values of an object.
 

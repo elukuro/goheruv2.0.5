@@ -1,7 +1,6 @@
----
-title: "Object constructor in javascript"
-date: "6 February 2022"
----
+## Object constructor in javascript
+
+### 6 February 2022
 
 Object constructor is a blueprint of an object, it is a function that is used to create an object.
 

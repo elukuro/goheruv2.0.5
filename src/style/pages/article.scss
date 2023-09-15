@@ -4,6 +4,9 @@
 @import "../normalize";
 
 .article{
+  margin-top:20px;
+  margin-bottom: 80px;
+  min-height: calc(100vh - 110px);
   h2{
     font-size: 30px;
     line-height: 100%;
@@ -29,4 +32,5 @@
     color:$light-gray;
     font-size: 14px;
   }
+
 }

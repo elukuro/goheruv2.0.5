@@ -1,7 +1,6 @@
----
-title: "How to destructure object and make alias for some of key name"
-date: "19 November 2021"
----
+## How to destructure object and make alias for some of key name
+
+### 19 November 2021
 
 Let say you have object that look like this:
 

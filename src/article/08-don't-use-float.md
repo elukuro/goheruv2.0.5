@@ -1,7 +1,6 @@
----
-title: "Don't use float attribute"
-date: "28 Mar 2021"
----
+## Don't use float attribute
+
+### 28 Mar 2021
 
 ### The use of float is heavily discouraged when making divisions
 

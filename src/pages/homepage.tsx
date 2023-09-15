@@ -4,10 +4,10 @@ const Homepage = () => {
   return (
     <>
       <div className="homepage">
-        <h1>Hello,</h1>
+        <h1>Hello, I'am Heru</h1>
         <p>
-          I'am Heru, <b>Frontend Developer based in Jakarta</b>, I have years experience mostly in
-          e-commerce industry. Sometimes I write about web development and devtips in <b>#DevTo </b>
+          <b>Frontend Developer based in Jakarta</b>, I have years experience mostly in e-commerce
+          industry. Sometimes I write about web development and devtips in <b>#DevTo </b>
           Community
         </p>
         <p>

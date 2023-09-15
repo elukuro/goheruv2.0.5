@@ -5,6 +5,12 @@
 
 .homepage{
   min-height: calc(100vh - 110px);
+  h1{
+    color:$black;
+  }
+  b{
+    color:$black;
+  }
   p{
     color:$dark-gray;
     font-size: $heading-3;

@@ -1,15 +1,13 @@
----
-title: "Clean code tips #2: Functions"
-date: "11 September 2021"
----
+## Clean code tips #2: Functions
+
+### 11 September 2021
 
 ## Use descriptive names
 
-Always remember to name your functions descriptively. It is allright if your function names are lengthy as long as they describe what the function does. Function names usually take the form of action verbs: 
-
+Always remember to name your functions descriptively. It is allright if your function names are lengthy as long as they describe what the function does. Function names usually take the form of action verbs:
 
 ```
-// ❌ Don't 
+// ❌ Don't
 
 function switch(){
 
@@ -39,7 +37,7 @@ Default arguments can prevent ur function from returning `undefined` and getting
 // ❌ Don't
 
 function printFromDirectory(dir){
-    return dir 
+    return dir
 }
 
 printFromDirectory()
@@ -48,7 +46,7 @@ printFromDirectory()
 // ✅ Do
 
 function printFromDirectory(dir = './print'){
-    return dir 
+    return dir
 }
 
 printFromDirectory()
@@ -56,7 +54,7 @@ printFromDirectory()
 
 ```
 
-## Limit the number of arguments 
+## Limit the number of arguments
 
 It is recommended to have anywhere from 0 to 2 arguments max for a single function. Any more than that and your function might seem too complex and can be made better by dividing into smaller ones.
 
@@ -66,7 +64,7 @@ function argument should only have zero, one or two arguments, more than that me
 if you want to pass data through function you can use an `object`
 
 ```
-// ❌ Don't 
+// ❌ Don't
 
 function sendUserData(name,state,sex,age){
 
@@ -90,9 +88,8 @@ sendUserData(userData)
 
 A function is best defined when it does one operation or action at a time. This reduces the function size, complexity and makes it easier to debug and refactor. Generally having a line range of 20-30 is acceptable and flags as arguments can be simplified as shown below :
 
-
 ```
-// ❌ Don't 
+// ❌ Don't
 function calculate(x, y, operation){
     if(operation === 'add'){
         return x + y;
@@ -127,12 +124,12 @@ function devideNumber(x,y){
 
 ```
 
-## Don't repeat yourself 
+## Don't repeat yourself
 
 If you find yourself with repetitive code, make sure to change it before its too late since it will become a hastle to make changes in the logic later on.
 
 ```
-// ❌ Don't 
+// ❌ Don't
 
 function getTrucksList(trucks) {
     trucks.forEach(truck)=>{
@@ -168,12 +165,12 @@ function getVehichlesList(vehicles){
 
 ```
 
-## Avoid side effects 
+## Avoid side effects
 
 Side effects of code refer to unexpected developments in results somewhere due to changes elsewhere. They are undesirable and causes of side effects are easier to fix if they are centralized
 
 ```
-// ❌ Don't 
+// ❌ Don't
 let date = "11-08-2021";
 
 function splitIntoDayMonthYear() {

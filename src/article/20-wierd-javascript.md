@@ -1,9 +1,8 @@
----
-title: "This is weird"
-date: "18 September 2021"
----
+## This is weird
 
-While reading a book 'Decoding javascript', a book explaining javascript in very deep detail, I came across something very interesting with respect to String operation logic. This is what I mean : 
+### 18 September 2021
+
+While reading a book 'Decoding javascript', a book explaining javascript in very deep detail, I came across something very interesting with respect to String operation logic. This is what I mean :
 
 ```
 
@@ -16,7 +15,7 @@ While reading a book 'Decoding javascript', a book explaining javascript in very
 // Okay that make sense but ...
 
 '1'+'1'*2
-// output 12 
+// output 12
 
 
 '1'+'1'/2
@@ -25,25 +24,26 @@ While reading a book 'Decoding javascript', a book explaining javascript in very
 // It's wierd then ....
 
 
-'1'-'1' 
-// output 0 , it's correct but why ? 
+'1'-'1'
+// output 0 , it's correct but why ?
 
 '1'-'1'/2
 // output 0.5
 
 ```
+
 ### Update
-I find out the answer here is the breakdown 
+
+I find out the answer here is the breakdown
 
 ```
-// '1'+'1'/2 = 12 
+// '1'+'1'/2 = 12
 
-// what happen here is first javascript work with divide operator 
+// what happen here is first javascript work with divide operator
 '1'/2
-// output = 0.5 
-// then continue the process with 
+// output = 0.5
+// then continue the process with
 '1'+0.5
 // output = 10.5
 
 ```
-

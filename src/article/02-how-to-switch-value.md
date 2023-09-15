@@ -1,9 +1,8 @@
----
-title: "Swapping values between variables"
-date: "25 Jan 2021"
----
+## Swapping values between variables
 
-You often come across coding skill sessions where they test your ability to swap the values of two variables. A mediocre developer usually does this via the `third var technique` shown below: 
+### 25 Jan 2021
+
+You often come across coding skill sessions where they test your ability to swap the values of two variables. A mediocre developer usually does this via the `third var technique` shown below:
 
 ```
 // they used var here instead of let :( what a shame
@@ -15,12 +14,12 @@ a = temp
 console.log(a, b);
 ```
 
-Better developers dont waste time writing a new line of code to declare and initialize a third variable, instead he does: 
+Better developers dont waste time writing a new line of code to declare and initialize a third variable, instead he does:
 
 ```
 let a = 10;
 let b = 15;
-[a,b] = [b,a]; // array destructuring 
+[a,b] = [b,a]; // array destructuring
 console.log(a, b);
 ```
 

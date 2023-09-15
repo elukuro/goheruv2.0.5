@@ -1,12 +1,10 @@
----
-title: "Ternary operator vs if..else block"
-date: "2 Feb 2021"
----
+## Ternary operator vs if..else block
+
+### 2 Feb 2021
 
 When programming simple conditions with one statement for each case, instead of using the clunky `if-else` block, we can use the `ternary` operator which only uses one line of code.
 
-
-### Usual (long) method: 
+### Usual (long) method:
 
 ```
 const x = 10;

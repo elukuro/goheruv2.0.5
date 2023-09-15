@@ -1,7 +1,6 @@
----
-title: "Converting a string to an Integer"
-date: "21 July 2021"
----
+## Converting a string to an Integer
+
+### 21 July 2021
 
 A very common way to get the integer value from a string of digits is to use the parseInt() method as shown below:
 

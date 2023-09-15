@@ -1,7 +1,6 @@
----
-title: "Understanding Asynchronous javascript"
-date: "8 December 2021"
----
+## Understanding Asynchronous javascript
+
+### 8 December 2021
 
 Let's me explain with a simple example
 

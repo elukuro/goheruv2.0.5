@@ -1,7 +1,6 @@
----
-title: "How to remove unwanted files in a commit but keep it locally"
-date: "12 Feb 2023"
----
+## How to remove unwanted files in a commit but keep it locally
+
+### 12 Feb 2023
 
 When I was working, I accidentally put package.lock.json and yarn.lock.json in a commit, I just notice this mistake in the last minutes before I submit merge request.
 
@@ -22,7 +21,7 @@ git push
 
 The ‘—-cached’ is the magic, In simple explanation I keep package.lock and yarn.lock in my computer because I still need those file, but I removed it from the staging area so it won’t appeared.
 
-Update:
+Up###
 
 You can also remove multiple files at once by listing them all in the command like this:
 

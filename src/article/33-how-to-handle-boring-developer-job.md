@@ -1,7 +1,6 @@
----
-title: "How to handle boring developer job"
-date: "27 May 2023"
----
+## How to handle boring developer job
+
+### 27 May 2023
 
 It's your first day work as developer in your dream startup company, you feel exited and nerveous, you wondering what kind of task that you will worked on, It's your dream come true to be part of startup that change the world. then fast forward three years later, did you still feel as exited as your first day ? If your answer is yes, congratulation then you really have a dream job, but most of us feel not the same.
 

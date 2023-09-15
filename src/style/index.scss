@@ -6,6 +6,9 @@
 body{
   font-family: $roboto;
 }
+p{
+  line-height: 150%;
+}
 .container{
   min-height: 320px;
   max-width: $max-width;
@@ -62,6 +65,8 @@ a{
   color:$dark-gray;
   font-weight:$bold;
   text-decoration: none;
+  padding-bottom: 3px;
+  margin-bottom: 3px;
   &:hover{
     border-bottom: 3px solid $yellow;
   }

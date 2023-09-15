@@ -1,7 +1,6 @@
----
-title: "Understanding Javascript Object"
-date: "22 January 2022"
----
+## Understanding Javascript Object
+
+### 22 January 2022
 
 Object in javascript are similar with arrays, they able to store multiple value, however the difference is object don't have indexed positions like arrays
 and object give a name to every value that you store.

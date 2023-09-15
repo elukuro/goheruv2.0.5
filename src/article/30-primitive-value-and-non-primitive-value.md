@@ -1,7 +1,6 @@
----
-title: "Primitive value and Non primitive value"
-date: "7 March 2022"
----
+## Primitive value and Non primitive value
+
+### 7 March 2022
 
 Primitive value in javascript is a value that is not have any properties or methods. Javascript have five data types of primitive values:
 

@@ -1,7 +1,6 @@
----
-title: "Type of function"
-date: "17 October 2021"
----
+## Type of function
+
+### 17 October 2021
 
 Using a `function` is a good way to contain spesific task so you can call it whenever you need, In simple term `function` is a block of code that is design to perform spesific task. Usually structure of function is look like this
 
