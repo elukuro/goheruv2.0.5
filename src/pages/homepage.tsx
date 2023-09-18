@@ -6,26 +6,30 @@ const Homepage = () => {
       <div className="homepage">
         <h1>Hello, I'am Heru</h1>
         <p>
-          <b>Frontend Developer based in Jakarta</b>, I have years experience mostly in e-commerce
-          industry. Sometimes I write about web development and devtips in <b>#DevTo </b>
+          ISTJ-A <b>Frontend Developer based in Jakarta 🌎</b>, I have years experience mostly in
+          e-commerce industry 🛒. Occasionally I write about web development and coding tips in{" "}
+          <a href="https://dev.to/elukuro" target="_blank">
+            <b>#DevTo</b>
+          </a>{" "}
           Community
         </p>
         <p>
-          Beside coding I also run as my <b>"cheap therapy"</b> for my zombie life every weekday, I
-          also love to read books mostly non fiction.
+          Beside coder 💻 I indentify my self as recreational runner 🏃 which mean I run as my{" "}
+          <b>cheap therapy</b> for my <i>commuting zombie 🧟 + 🚌</i> life every weekday. I read a
+          lot books 📖 mostly non fiction.
         </p>
         <p>You can find me on social media </p>
         <ul className="homepage__social-media">
           <li>
             <a href="https://twitter.com/goheru_" target="_blank" rel="noopener noreferrer">
-              Twitter
+              X (Twitter)
             </a>
           </li>
-          <li>
+          {/* <li>
             <a href="https://goheru.medium.com" target="_blank" rel="noopener noreferrer">
               Medium
             </a>
-          </li>
+          </li> */}
           <li>
             <a href="https://github.com/elukuro" target="_blank" rel="noopener noreferrer">
               Github
@@ -40,11 +44,11 @@ const Homepage = () => {
               Linkedin
             </a>
           </li>
-          <li>
+          {/* <li>
             <a href="mailto:heruhartanto110291@gmail.com" target="_blank" rel="noopener noreferrer">
               Email
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </>
