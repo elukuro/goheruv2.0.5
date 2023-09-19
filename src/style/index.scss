@@ -71,3 +71,22 @@ a{
     border-bottom: 3px solid $yellow;
   }
 }
+
+
+@media screen and (max-width: 1024px) {
+  .container{
+    max-width: $full-max-width;
+    padding:0px 30px;
+    min-height: auto;
+  }
+  .header{
+    max-width: $full-max-width;
+    &__nav{
+      padding:0px 30px;
+    }
+  }
+  .footer{
+    flex-direction: column;
+    gap:0px;
+  }
+}

@@ -8,7 +8,8 @@ const RenderArticleList = () => {
       <>
         <div className="devtips__list">
           <Link to={article}>
-            <span>Tips {index + 1}:</span> {article.split("-").join(" ").replace(/[0-9]/g, "")}
+            <span>Tips {index + 1}:</span>{" "}
+            <p>{article.split("-").join(" ").replace(/[0-9]/g, "")}</p>
           </Link>
         </div>
       </>

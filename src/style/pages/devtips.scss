@@ -9,8 +9,14 @@
     color:$black;
   }
   &__list{
-    margin-bottom: 18px;
     a{
+      display: flex;
+      justify-content: flex-start;
+      gap:10px;
+      align-items: baseline;
+      &:hover{
+        border:none;
+      }
       span{
         color:$gray;
         font-weight: $light;
@@ -19,6 +25,24 @@
       font-weight: $bold;
       color:$dark-gray;
       text-transform: capitalize;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .devtips{
+    margin-top:80px;
+    &__list{
+      a{
+        gap:0px;
+        span{
+          width:90px;
+        }
+        p{
+          width:400px;
+        }
+      }
     }
   }
 }
