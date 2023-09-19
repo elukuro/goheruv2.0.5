@@ -1,0 +1,24 @@
+@import "../fonts";
+@import "../color";
+@import "../common";
+@import "../normalize";
+
+.devtips{
+  min-height: calc(100vh - 110px);
+  h1{
+    color:$black;
+  }
+  &__list{
+    margin-bottom: 18px;
+    a{
+      span{
+        color:$gray;
+        font-weight: $light;
+      }
+      font-size: $content-1;
+      font-weight: $bold;
+      color:$dark-gray;
+      text-transform: capitalize;
+    }
+  }
+}

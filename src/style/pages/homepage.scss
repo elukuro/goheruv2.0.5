@@ -1,0 +1,26 @@
+@import "../fonts";
+@import "../color";
+@import "../common";
+@import "../normalize";
+
+.homepage{
+  min-height: calc(100vh - 110px);
+  h1{
+    color:$black;
+  }
+  b{
+    color:$black;
+  }
+  p{
+    color:$dark-gray;
+    font-size: $heading-3;
+    line-height: 140%;
+  }
+  &__social-media{
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    gap:10px;
+  }
+
+}

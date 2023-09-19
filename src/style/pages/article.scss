@@ -1,0 +1,36 @@
+@import "../fonts";
+@import "../color";
+@import "../common";
+@import "../normalize";
+
+.article{
+  margin-top:20px;
+  margin-bottom: 80px;
+  min-height: calc(100vh - 110px);
+  h2{
+    font-size: 30px;
+    line-height: 100%;
+    display: block;
+    margin:0;
+    padding:0;
+  }
+  h3{
+    font-size: 20px;
+    color:$dark-gray;
+  }
+  blockquote{
+    margin:0;
+    border-left: 3px solid $gray;
+    p{
+      font-style: italic;
+      margin-left:20px;
+    }
+  }
+  pre{
+    padding: 20px;
+    background: $black;
+    color:$light-gray;
+    font-size: 14px;
+  }
+
+}

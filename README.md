@@ -1,2 +1,1 @@
-# goheru
-my dump personal website craft with react.js
+#Goheru V.3.0

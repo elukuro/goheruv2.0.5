@@ -1,0 +1,73 @@
+@import "fonts";
+@import "color";
+@import "common";
+@import "normalize";
+
+body{
+  font-family: $roboto;
+}
+p{
+  line-height: 150%;
+}
+.container{
+  min-height: 320px;
+  max-width: $max-width;
+  margin:0 auto;
+}
+
+.header{
+  max-width: $max-width;
+  margin:0 auto;
+  &__nav{
+  display: flex;
+  justify-content:flex-end;
+  gap:16px;
+  align-items: center;
+  li{
+    list-style-type: none;
+    a{
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: $lato;
+      font-weight: $bold;
+      color:$dark-gray;
+      &:hover{
+        border-bottom: 3px solid $yellow;
+      }
+      &.active{
+        border-bottom: 3px solid $yellow;
+      }
+    }
+  }
+ }
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  margin:0 auto;
+  background-color: $light-gray;
+  &__text{
+    font-size: $content-2;
+    color:$dark-gray;
+    font-weight: $light;
+  }
+  &__image{
+    width:10px;
+    transform: rotate(90deg);
+  }
+}
+
+a{
+  color:$dark-gray;
+  font-weight:$bold;
+  text-decoration: none;
+  padding-bottom: 3px;
+  margin-bottom: 3px;
+  &:hover{
+    border-bottom: 3px solid $yellow;
+  }
+}
