@@ -1,14 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { Link } from "react-router-dom";
 import "./../style/pages/devtips.scss";
-import { articleList } from "../article";
+import { articleListData } from "../article";
+import { useState } from "react";
 
-const RenderArticleList = () => {
-  return articleList.map((article, index) => {
+const RenderArticleList = ({ reverse }: { reverse: any }) => {
+  const data = articleListData(reverse);
+  return data.map((article, index) => {
     return (
       <>
         <div className="devtips__list">
           <Link to={article}>
-            <span>Tips {index + 1}:</span> {article.split("-").join(" ").replace(/[0-9]/g, "")}
+            <span>Tips {index + 1}:</span>{" "}
+            <p>{article.split("-").join(" ").replace(/[0-9]/g, "")}</p>
           </Link>
         </div>
       </>
@@ -16,11 +20,17 @@ const RenderArticleList = () => {
   });
 };
 const Article = () => {
+  const [isReverse, setReserve] = useState(true);
   return (
     <>
       <div className="devtips">
-        <h1>#DEVTIPS</h1>
-        <RenderArticleList />
+        <div className="devtips__header">
+          <h1>#DEVTIPS</h1>
+          <span onClick={() => setReserve(!isReverse)}>
+            Sort: {isReverse ? "Oldest" : "Newest"}
+          </span>
+        </div>
+        <RenderArticleList reverse={isReverse} />
       </div>
     </>
   );

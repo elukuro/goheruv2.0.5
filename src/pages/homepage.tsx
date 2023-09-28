@@ -14,7 +14,7 @@ const Homepage = () => {
           Community
         </p>
         <p>
-          Beside coder 💻 I indentify my self as recreational runner 🏃 which mean I run as my{" "}
+          Beside programmer 💻 I indentify my self as recreational runner 🏃 which mean I run as my{" "}
           <b>cheap therapy</b> for my <i>commuting zombie 🧟 + 🚌</i> life every weekday. I read a
           lot books 📖 mostly non fiction.
         </p>

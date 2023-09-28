@@ -5,12 +5,31 @@
 
 .devtips{
   min-height: calc(100vh - 110px);
-  h1{
-    color:$black;
+  margin-top: 40px;
+  &__header{
+    display: flex;
+    justify-content: flex-start;
+    gap:20px;
+    align-items: baseline;
+    span{
+      color:$gray;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: $content-1;
+    }
   }
   &__list{
-    margin-bottom: 18px;
     a{
+      display: flex;
+      justify-content: flex-start;
+      gap:10px;
+      align-items: baseline;
+      padding:10px;
+      border:1px solid white;
+      &:hover{
+        border:1px solid $yellow;
+        border-radius: 5px;
+      }
       span{
         color:$gray;
         font-weight: $light;
@@ -19,6 +38,24 @@
       font-weight: $bold;
       color:$dark-gray;
       text-transform: capitalize;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .devtips{
+    margin-top:80px;
+    &__list{
+      a{
+        gap:0px;
+        span{
+          width:90px;
+        }
+        p{
+          width:400px;
+        }
+      }
     }
   }
 }
