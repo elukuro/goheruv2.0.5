@@ -5,8 +5,18 @@
 
 .devtips{
   min-height: calc(100vh - 110px);
-  h1{
-    color:$black;
+  margin-top: 40px;
+  &__header{
+    display: flex;
+    justify-content: flex-start;
+    gap:20px;
+    align-items: baseline;
+    span{
+      color:$gray;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: $content-1;
+    }
   }
   &__list{
     a{
@@ -14,8 +24,11 @@
       justify-content: flex-start;
       gap:10px;
       align-items: baseline;
+      padding:10px;
+      border:1px solid white;
       &:hover{
-        border:none;
+        border:1px solid $yellow;
+        border-radius: 5px;
       }
       span{
         color:$gray;

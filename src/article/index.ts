@@ -1,4 +1,4 @@
-export const articleList = [
+const articleList = [
 '33-how-to-handle-boring-developer-job',
 '32-how-to-remove-unwanted-files-in-a-commit',
 '31-how-to-get-object-values-without-iterating',
@@ -32,6 +32,12 @@ export const articleList = [
 '03-unique-array',
 '02-how-to-switch-value',
 '01-use-no-var-anymore',
-]
+].reverse()
 
+export const articleListData = (reverse = true) => {
+  if(reverse){
+    return [...articleList].reverse()
+  }
+  return [...articleList]
+}
 
