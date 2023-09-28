@@ -4,7 +4,7 @@ import "./../style/pages/devtips.scss";
 import { articleListData } from "../article";
 import { useState } from "react";
 
-const RenderArticleList = ({ reverse }) => {
+const RenderArticleList = ({ reverse }: { reverse: any }) => {
   const data = articleListData(reverse);
   return data.map((article, index) => {
     return (
