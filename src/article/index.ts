@@ -1,4 +1,5 @@
 const articleList = [
+'34-how-to-deal-with-imposter-syndrom',
 '33-how-to-handle-boring-developer-job',
 '32-how-to-remove-unwanted-files-in-a-commit',
 '31-how-to-get-object-values-without-iterating',
