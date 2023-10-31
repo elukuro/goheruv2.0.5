@@ -9,7 +9,7 @@ const Detail = () => {
   const { title } = useParams();
 
   const generateData = async () => {
-    const file = await import(`../article/${title}.md`);
+    const file = await import(`../../public/article/${title}.md`);
     const response = await fetch(file.default)
       .then((res) => res.text())
       .then((text) => text);

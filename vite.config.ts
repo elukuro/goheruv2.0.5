@@ -7,6 +7,11 @@ import sass from 'sass'
 export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.md'],
+  root: './',
+  build: {
+      outDir: 'dist',
+  },
+  publicDir: 'public',
   css: {
     preprocessorOptions: {
       scss: {
