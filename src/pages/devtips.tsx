@@ -9,12 +9,12 @@ import "./../style/pages/devtips.scss";
 const articles = import.meta.glob("../../public/article/*.md", { eager: true, import: "default" });
 
 const RenderArticleList = ({ reverse }: { reverse: any }) => {
-  let articleListData = Object.values(articles);
+  let articleListData = Object.keys(articles);
   if (reverse) {
     articleListData = articleListData.reverse();
   }
   const createLink = (link: any) => {
-    return `${link.replace("/public/article/", "").replace(".md", "")}`;
+    return `${link.replace("../../public/article/", "").replace(".md", "")}`;
   };
 
   return articleListData.map((article: any, index) => {
@@ -29,19 +29,6 @@ const RenderArticleList = ({ reverse }: { reverse: any }) => {
       </>
     );
   });
-
-  // return data.map((article, index) => {
-  //   return (
-  //     <>
-  //       <div className="devtips__list">
-  //         <Link to={article}>
-  //           <span>Tips {index + 1}:</span>{" "}
-  //           <p>{article.split("-").join(" ").replace(/[0-9]/g, "")}</p>
-  //         </Link>
-  //       </div>
-  //     </>
-  //   );
-  // });
 };
 
 const Article = () => {

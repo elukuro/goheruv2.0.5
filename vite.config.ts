@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig,rollupPluginVueOptions } from 'vite'
 import react from '@vitejs/plugin-react'
 import sass from 'sass'
 
@@ -8,10 +8,13 @@ export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.md'],
   root: './',
-  build: {
-      outDir: 'dist',
-  },
   publicDir: 'public',
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      external: []
+  }
+  },
   css: {
     preprocessorOptions: {
       scss: {
