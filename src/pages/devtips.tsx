@@ -1,24 +1,36 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { Link } from "react-router-dom";
-import "./../style/pages/devtips.scss";
-import { articleListData } from "../article";
 import { useState } from "react";
+import "./../style/pages/devtips.scss";
+// import { articleListData } from "../article";
+
+const articles = import.meta.glob("../../public/article/*.md", { eager: true, import: "default" });
 
 const RenderArticleList = ({ reverse }: { reverse: any }) => {
-  const data = articleListData(reverse);
-  return data.map((article, index) => {
+  let articleListData = Object.keys(articles);
+  if (reverse) {
+    articleListData = articleListData.reverse();
+  }
+  const createLink = (link: any) => {
+    return `${link.replace("../../public/article/", "").replace(".md", "")}`;
+  };
+
+  return articleListData.map((article: any, index) => {
     return (
       <>
         <div className="devtips__list">
-          <Link to={article}>
+          <Link to={createLink(article)}>
             <span>Tips {index + 1}:</span>{" "}
-            <p>{article.split("-").join(" ").replace(/[0-9]/g, "")}</p>
+            <p>{createLink(article).split("-").join(" ").replace(/[0-9]/g, "")}</p>
           </Link>
         </div>
       </>
     );
   });
 };
+
 const Article = () => {
   const [isReverse, setReserve] = useState(true);
   return (
