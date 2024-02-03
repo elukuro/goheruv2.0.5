@@ -15,10 +15,10 @@ const Header = () => {
       name: "devtips",
       link: "/devtips",
     },
-    // {
-    //   name: "book",
-    //   link: "#book"
-    // }
+    {
+      name: "Remainder",
+      link: "/remainder",
+    },
   ];
   const { activeNav, setActiveNav } = useContext(NavContext);
   const location = useLocation();

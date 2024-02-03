@@ -2,6 +2,7 @@ import Homepage from "../pages/homepage.tsx";
 import ErrorPage from "../pages/error.tsx";
 import ArticlePage from "../pages/devtips.tsx";
 import DetailPage from "../pages/detail.tsx";
+import RemainderPage from "../pages/remainder.tsx";
 
 import App from "./../app.tsx";
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
           {
             path: "/devtips",
             element: <ArticlePage />,
+          },
+          {
+            path: "/remainder",
+            element: <RemainderPage />,
           },
         ],
       },
