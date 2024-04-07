@@ -6,17 +6,21 @@ const Homepage = () => {
       <div className="homepage">
         <h1>Hello, I'am Heru</h1>
         <p>
-          ISTJ-A <b>Frontend Developer based in Jakarta 🌎</b>, I have years experience mostly in
-          e-commerce industry 🛒. Occasionally I write about web development and coding tips in{" "}
+          <b>Jakarta 🌎 based Frontend Developer</b>, in my recent years of work, I've focused on
+          build user-friendly e-commerce interfaces that make online shopping experience flawless
+          🛒. Occasionally I'm write about web development and coding tips in{" "}
           <a href="https://dev.to/elukuro" target="_blank">
             <b>#DevTo</b>
           </a>{" "}
-          Community
+          Community.
         </p>
         <p>
-          Beside programmer 💻 I indentify my self as recreational runner 🏃 which mean I run as my{" "}
-          <b>cheap therapy</b> for my <i>commuting zombie 🧟 + 🚌</i> life every weekday. I read a
-          lot books 📖 mostly non fiction.
+          When I'm not coding 💻 you can find me hitting the pavement as a recreational runner 🏃
+          It's my way to clear my head after battling rush hour commutes like a real-life zombie 🧟
+          + 🚌 .
+        </p>
+        <p>
+          To fuel my mind, I devour non-fiction books 📖 there's always something new to learn!.
         </p>
         <p>You can find me on social media </p>
         <ul className="homepage__social-media">
