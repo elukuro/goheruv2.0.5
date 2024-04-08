@@ -3,7 +3,7 @@ import ErrorPage from "../pages/error.tsx";
 import ArticlePage from "../pages/devtips.tsx";
 import DetailPage from "../pages/detail.tsx";
 
-import App from "./../app.tsx";
+import App from "./../App.tsx";
 
 import { createBrowserRouter } from "react-router-dom";
 
