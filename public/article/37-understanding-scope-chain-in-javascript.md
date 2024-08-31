@@ -1,4 +1,4 @@
-### Understanding Scope Chain in JavaScript
+## Understanding Scope Chain in JavaScript
 
 ### 4 Aug 2024
 

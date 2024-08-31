@@ -1,4 +1,4 @@
-### What is Tagged Template Literals?
+## What is Tagged Template Literals?
 
 ### 4 Aug 2024
 
