@@ -17,6 +17,7 @@ const Detail = () => {
     setMarkdown(write);
   };
 
+
   useEffect(() => {
     generateData();
   }, []);
